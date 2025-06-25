@@ -31,7 +31,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-aireal-primary">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-aireal-primary pt-24">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
