@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 
 export default function About() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
@@ -31,15 +29,6 @@ export default function About() {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: 'easeOut' }
-    }
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0.1, filter: 'blur(2px)' },
-    visible: { 
-      opacity: 1, 
-      filter: 'blur(0px)',
-      transition: { duration: 0.3, ease: 'easeOut' }
     }
   };
 
@@ -80,7 +69,7 @@ export default function About() {
       <div className="absolute inset-0 bg-aireal-primary rounded-2xl">
         {/* Gradient Ellipse 1 */}
         <div 
-          className="absolute w-[658px] h-[548px] rounded-full opacity-15 blur-[80px]"
+          className="absolute w-[658px] h-[548px] rounded-full opacity-[0.08] blur-[80px]"
           style={{
             background: 'linear-gradient(143.24deg, rgb(128, 170, 253), rgb(211, 123, 255) 31.09%, rgb(252, 172, 132) 70.46%, rgb(255, 130, 225))',
             left: '-246px',
@@ -90,21 +79,21 @@ export default function About() {
         
         {/* Gradient Ellipse 2 */}
         <div 
-          className="absolute w-[658px] h-[548px] rounded-full opacity-13 blur-[80px]"
+          className="absolute w-[658px] h-[548px] rounded-full opacity-[0.06] blur-[80px]"
           style={{
             background: 'linear-gradient(140.02deg, #EFE8F6, #D588FB 60.83%, rgb(255, 130, 225))',
             right: '-96px',
-            top: '520px'
+            bottom: '-100px'
           }}
         />
         
         {/* Gradient Ellipse 3 */}
         <div 
-          className="absolute w-[658px] h-[548px] rounded-full opacity-12 blur-[80px]"
+          className="absolute w-[658px] h-[548px] rounded-full opacity-[0.05] blur-[80px]"
           style={{
             background: 'linear-gradient(143.24deg, rgb(128, 170, 253), rgb(211, 123, 255) 31.09%, rgb(252, 172, 132) 70.46%, rgb(255, 130, 225))',
-            left: '83px',
-            top: '1394px'
+            left: '20%',
+            bottom: '-200px'
           }}
         />
       </div>
@@ -115,10 +104,10 @@ export default function About() {
         className="relative z-10 flex flex-col items-center justify-center min-h-screen px-10 py-20 lg:px-20"
         variants={containerVariants}
         initial="hidden"
-        animate={controls}
+        animate="visible"
       >
-        {/* Sticky Title Container */}
-        <div className="sticky top-0 flex flex-col items-start justify-center gap-4 h-screen max-w-4xl w-full">
+        {/* Title Container */}
+        <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
           
           {/* Badge */}
           <motion.div
@@ -131,26 +120,20 @@ export default function About() {
           </motion.div>
 
           {/* Animated Text */}
-          <motion.div
-            className="sticky top-0 text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white select-none"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
+          <div className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white select-none">
             {words.map((word, index) => (
-              <motion.span
+              <span
                 key={index}
                 className={`inline-block mr-1 transition-all duration-200 ease-out ${
                   index < currentWordIndex 
                     ? 'opacity-100 blur-0' 
                     : 'opacity-10 blur-sm'
                 }`}
-                variants={wordVariants}
-                custom={index}
               >
                 {word}
-              </motion.span>
+              </span>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
