@@ -31,7 +31,7 @@ export default function Header() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-4 left-4 right-4 z-50 flex justify-center"
+        className="fixed top-4 left-4 right-4 z-[100] flex justify-center"
       >
         <nav className={`glassmorphism rounded-2xl px-6 py-4 flex items-center justify-between transition-all duration-300 w-full max-w-6xl ${
           isScrolled ? 'bg-white/20' : 'bg-white/10'
@@ -93,7 +93,7 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 h-full w-80 max-w-[calc(100vw-2rem)] glassmorphism-dark p-6 pt-20 z-40 md:hidden"
+            className="fixed top-0 right-0 h-full w-80 max-w-[calc(100vw-2rem)] glassmorphism-dark p-6 pt-20 z-[90] md:hidden"
           >
             <div className="flex flex-col space-y-6">
               {NAVIGATION_LINKS.map((link, index) => (
@@ -127,7 +127,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          className="fixed inset-0 bg-black/50 z-[80] md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
