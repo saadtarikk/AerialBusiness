@@ -112,9 +112,9 @@ export default function About() {
           {/* Badge */}
           <motion.div
             variants={badgeVariants}
-            className="inline-flex items-center px-5 py-2 border border-aireal-purple bg-white rounded-full shadow-lg mb-5"
+            className="inline-flex items-center px-5 py-2 border border-white/20 bg-white/10 rounded-full shadow-lg mb-5 glassmorphism"
           >
-            <p className="text-sm font-medium text-aireal-primary lowercase">
+            <p className="text-sm font-medium text-white/90 lowercase">
               about
             </p>
           </motion.div>

@@ -63,9 +63,9 @@ const cardVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="py-32 bg-white relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-pink-50/30"></div>
+    <section id="features" className="py-32 bg-dark-section relative overflow-hidden">
+      {/* Dark gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/10 to-pink-900/10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -76,12 +76,12 @@ export default function Features() {
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants}>
-            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-gray-600 text-sm font-medium border border-gray-200/50 bg-white/60 backdrop-blur-sm">
+            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-white/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
               ⚡ powerful features
             </Badge>
           </motion.div>
           
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 mb-8 leading-[1.1]">
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 leading-[1.1]">
             Everything you need for
             <br />
             <span className="bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent">
@@ -89,7 +89,7 @@ export default function Features() {
             </span>
           </motion.h2>
           
-          <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <motion.p variants={itemVariants} className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Our comprehensive AI platform provides all the tools and intelligence needed to deliver world-class customer support.
           </motion.p>
         </motion.div>
@@ -126,7 +126,7 @@ export default function Features() {
                 }}
                 className="group"
               >
-                <Card className="h-full glassmorphism border-white/20 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500">
+                <Card className="h-full glassmorphism-card border-white/10 bg-white/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500">
                   <CardContent className="p-8">
                     <motion.div 
                       className={`w-14 h-14 bg-gradient-to-r ${gradientClasses[index]} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
@@ -134,8 +134,8 @@ export default function Features() {
                     >
                       <IconComponent className="text-white text-2xl" />
                     </motion.div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="text-xl font-bold text-white mb-4 leading-tight">{feature.title}</h3>
+                    <p className="text-white/70 leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>
