@@ -3,13 +3,39 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: [
-    "./client/index.html", 
-    "./client/src/**/*.{js,jsx,ts,tsx}",
-    "./index.html", 
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
-    "./pages/**/*.{js,jsx,ts,tsx}"
+    "./client/src/**/*.{js,ts,jsx,tsx}",
+    "./client/index.html"
+  ],
+  safelist: [
+    'bg-black',
+    'text-white',
+    'glassmorphism',
+    'glassmorphism-dark',
+    'glassmorphism-card',
+    'bg-dark-section',
+    'bg-dark-card',
+    'bg-dark-muted',
+    'text-aireal-primary',
+    'bg-aireal-primary',
+    'bg-aireal-background',
+    'text-aireal-purple',
+    'bg-aireal-purple',
+    'backdrop-blur-md',
+    'backdrop-blur-lg',
+    'backdrop-blur-xl',
+    'animate-fade-in-up',
+    'animate-char-fade-in',
+    'animate-float',
+    'animate-pulse-glow',
+    'animate-gradient-shift',
+    {
+      pattern: /bg-(gradient|aireal)-.*/,
+      variants: ['hover', 'focus', 'active']
+    },
+    {
+      pattern: /text-(gradient|aireal)-.*/,
+      variants: ['hover', 'focus', 'active']
+    }
   ],
   theme: {
     extend: {
