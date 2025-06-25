@@ -1,0 +1,445 @@
+# Aireal Website - Modern Tech Stack Setup
+
+## Overview
+Create a production-ready website for **Aireal**, an AI-powered customer service platform, using the latest Silicon Valley startup tech stack. The site should be optimized for Vercel deployment with a focus on performance, animations, and modern design patterns.
+
+## Tech Stack (Silicon Valley Standard)
+
+### Core Framework
+- **Next.js 14+** with App Router architecture
+- **TypeScript** for type safety and better developer experience
+- **React 18+** with latest features (Suspense, Server Components)
+
+### Styling & Design
+- **Tailwind CSS v3+** with custom design system
+- **CSS Modules** for component-specific styles (legacy support)
+- **PostCSS** for advanced CSS processing
+- **Autoprefixer** for browser compatibility
+
+### Animations & Interactions
+- **Framer Motion** for smooth, performant animations
+- **React Spring** (optional alternative for physics-based animations)
+- **Intersection Observer API** for scroll-triggered animations
+
+### UI Components
+- **Headless UI** for accessible, unstyled components
+- **Radix UI** primitives for complex components
+- **Lucide React** or **Heroicons** for consistent iconography
+
+### Performance & Optimization
+- **Next.js Image Optimization** for automatic image compression
+- **Bundle Analyzer** for monitoring bundle size
+- **Web Vitals** tracking for performance metrics
+- **Automatic Static Optimization** for fast loading
+
+### Development Tools
+- **ESLint** with Next.js config
+- **Prettier** for code formatting
+- **Husky** for git hooks
+- **TypeScript strict mode** enabled
+
+## Project Structure
+
+```
+aireal-website/
+├── app/                          # Next.js 14 App Directory
+│   ├── globals.css              # Global styles and Tailwind imports
+│   ├── layout.tsx               # Root layout with providers
+│   ├── page.tsx                 # Homepage combining all sections
+│   ├── loading.tsx              # Loading UI
+│   ├── not-found.tsx           # 404 page
+│   └── favicon.ico
+├── components/                   # React Components
+│   ├── ui/                      # Reusable UI primitives
+│   │   ├── Button.tsx
+│   │   ├── Badge.tsx
+│   │   ├── Card.tsx
+│   │   └── index.ts
+│   ├── sections/                # Page sections
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Features.tsx
+│   │   ├── Testimonials.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── FAQ.tsx
+│   │   └── Footer.tsx
+│   ├── animations/              # Framer Motion variants
+│   │   ├── variants.ts
+│   │   ├── transitions.ts
+│   │   └── scroll-animations.ts
+│   └── providers/               # Context providers
+│       ├── ThemeProvider.tsx
+│       └── MotionProvider.tsx
+├── lib/                         # Utility functions
+│   ├── utils.ts                # Class name utilities, helpers
+│   ├── constants.ts            # App constants and config
+│   ├── animations.ts           # Animation configurations
+│   └── fonts.ts                # Font configurations
+├── public/                      # Static assets
+│   ├── images/
+│   │   ├── hero-bg.png
+│   │   ├── dashboard-preview.png
+│   │   └── logos/
+│   ├── icons/
+│   └── favicon/
+├── styles/                      # Additional stylesheets
+│   ├── components.css          # Component-specific styles
+│   └── animations.css          # Custom animation keyframes
+├── types/                       # TypeScript type definitions
+│   ├── global.d.ts
+│   └── components.ts
+├── .env.local                   # Environment variables
+├── .env.example                # Environment template
+├── tailwind.config.js          # Tailwind configuration
+├── next.config.js              # Next.js configuration
+├── tsconfig.json               # TypeScript configuration
+├── package.json                # Dependencies and scripts
+├── README.md                   # Project documentation
+└── vercel.json                 # Vercel deployment config
+```
+
+## Component Specifications
+
+### 1. Header Component (`components/sections/Header.tsx`)
+
+**Design Requirements:**
+- Glassmorphism navigation bar with blur backdrop effect
+- Fixed positioning with smooth scroll behavior
+- Responsive design with mobile hamburger menu
+- Logo with custom SVG icon and company name
+
+**Features:**
+- Navigation links: Features, About, Testimonials, Pricing, FAQ
+- Primary CTA button: "Contact"
+- Hover animations on all interactive elements
+- Active state indicators for current page section
+
+**Styling Classes:**
+```css
+backdrop-blur-md bg-white/10 border border-white/25 rounded-2xl
+fixed top-4 left-1/2 transform -translate-x-1/2 z-50
+```
+
+**Framer Motion Animations:**
+- Entrance animation with `y: -20, opacity: 0`
+- Staggered navigation link reveals
+- Hover effects with scale and color transitions
+
+### 2. Hero Section (`components/sections/Hero.tsx`)
+
+**Design Requirements:**
+- Full viewport height with background image overlay
+- Glassmorphism badge: "business & solution"
+- Large animated headline: "The AI-powered Customer Service Platform"
+- Detailed description with character-by-character animation
+- Dual CTA buttons: "Get Started" (primary) + "Book a Demo" (secondary)
+- 3D-transformed dashboard preview image
+
+**Features:**
+- Background image with gradient overlay
+- Staggered word animations for headline
+- Character-by-character typing effect for description
+- Parallax scroll effect on dashboard image
+- Responsive design with mobile optimizations
+
+**Animation Sequence:**
+1. Badge entrance (0.2s delay)
+2. Headline words stagger (0.1s intervals)
+3. Description characters (0.02s intervals, starts at 0.8s)
+4. CTA buttons (2s delay)
+5. Dashboard image (2.2s delay)
+
+### 3. About Section (`components/sections/About.tsx`)
+
+**Design Requirements:**
+- Dark theme with `bg-primary` (rgb(27, 12, 37))
+- Sticky animated text container
+- Badge with "about" text
+- Multi-gradient blob backgrounds with blur effects
+
+**Features:**
+- Scroll-triggered word-by-word text reveals
+- Continuous text animation cycle
+- Three gradient orb backgrounds with different positions
+- Responsive design with mobile adaptations
+
+**Text Content:**
+```
+"Aireal is crafted to elevate how businesses showcase their AI solutions. 
+With a focus on clean design, it helps brands engage and convert."
+```
+
+**Gradient Backgrounds:**
+- Ellipse 1: `linear-gradient(143.24deg, #80AAFD, #D37BFF 31.09%, #FCAC84 70.46%, #FF82E1)`
+- Ellipse 2: `linear-gradient(140.02deg, #EFE8F6, #D588FB 60.83%, #FF82E1)`
+- Ellipse 3: Same as Ellipse 1
+
+### 4. Footer Component (`components/sections/Footer.tsx`)
+
+**Design Requirements:**
+- Two-section layout: CTA header + footer content
+- Dark theme with gradient backgrounds
+- Glassmorphism elements throughout
+
+**CTA Header Section:**
+- Badge: "Join the AI Revolution"
+- Headline: "Ready to start your AI journey with us?"
+- Two CTA buttons: "Get Started" + "Book a Demo"
+
+**Footer Content:**
+- Left section: Logo, tagline, social media icons
+- Right section: Two-column navigation links
+- Company info: Address, copyright, privacy policy
+
+**Social Links:**
+- Facebook, Twitter/X, Instagram, LinkedIn
+- Hover effects with opacity transitions
+
+**Navigation Columns:**
+- Use Links: Feature, About, Testimonial, Pricing, Contact, Blog, 404
+- Company: Address "105 North 1st Street, #28, San Jose, CA 94748"
+
+## Design System Configuration
+
+### Tailwind Config (`tailwind.config.js`)
+```javascript
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: 'rgb(27, 12, 37)',
+        background: 'rgb(247, 246, 247)',
+        purple: 'rgb(213, 136, 251)',
+        gradients: {
+          1: 'rgb(128, 170, 253)',
+          2: 'rgb(211, 123, 255)',
+          3: 'rgb(252, 172, 132)',
+          4: 'rgb(255, 130, 225)',
+        }
+      },
+      fontFamily: {
+        sans: ['General Sans', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      animation: {
+        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+        'char-fade-in': 'charFadeIn 0.1s ease-out forwards',
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        charFadeIn: {
+          '0%': { opacity: '0', filter: 'blur(2px)' },
+          '100%': { opacity: '1', filter: 'blur(0px)' },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+### Font Configuration (`lib/fonts.ts`)
+```typescript
+import { Inter } from 'next/font/google'
+
+export const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+})
+
+// Custom font loading for General Sans
+export const generalSans = {
+  className: 'font-sans',
+  style: {
+    fontFamily: '"General Sans", "General Sans Placeholder", sans-serif'
+  }
+}
+```
+
+## Animation System
+
+### Framer Motion Variants (`components/animations/variants.ts`)
+```typescript
+export const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+export const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, ease: 'easeOut' }
+  }
+}
+
+export const wordVariants = {
+  hidden: { opacity: 0.1, filter: 'blur(2px)' },
+  visible: { 
+    opacity: 1, 
+    filter: 'blur(0px)',
+    transition: { duration: 0.3, ease: 'easeOut' }
+  }
+}
+```
+
+### Scroll Animations (`components/animations/scroll-animations.ts`)
+```typescript
+import { useScroll, useTransform } from 'framer-motion'
+
+export const useParallax = (value: MotionValue<number>, distance: number) => {
+  return useTransform(value, [0, 1], [-distance, distance])
+}
+
+export const useScrollReveal = () => {
+  const { scrollYProgress } = useScroll()
+  return useTransform(scrollYProgress, [0, 0.5], [0, 1])
+}
+```
+
+## Performance Optimizations
+
+### Next.js Configuration (`next.config.js`)
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    domains: ['framerusercontent.com'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+}
+
+module.exports = nextConfig
+```
+
+### Bundle Analysis
+```json
+{
+  "scripts": {
+    "analyze": "cross-env ANALYZE=true next build",
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  }
+}
+```
+
+## Deployment Configuration
+
+### Vercel Configuration (`vercel.json`)
+```json
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "functions": {
+    "app/**/*.{js,ts,jsx,tsx}": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
+```
+
+### Environment Variables (`.env.example`)
+```env
+# App Configuration
+NEXT_PUBLIC_APP_URL=https://yourdomain.com
+NEXT_PUBLIC_SITE_NAME=Aireal
+
+# Analytics (Optional)
+NEXT_PUBLIC_GA_ID=
+VERCEL_ANALYTICS_ID=
+
+# Contact Form (Optional)
+CONTACT_EMAIL=
+```
+
+## Installation Commands
+
+### Initial Setup
+```bash
+# Create Next.js project with TypeScript and Tailwind
+npx create-next-app@latest aireal-website --typescript --tailwind --app --eslint
+
+# Navigate to project
+cd aireal-website
+
+# Install animation libraries
+npm install framer-motion
+
+# Install UI libraries
+npm install @headlessui/react @radix-ui/react-icons lucide-react
+
+# Install development tools
+npm install -D @types/node @tailwindcss/typography
+
+# Install additional utilities
+npm install clsx tailwind-merge class-variance-authority
+```
+
+### Development Commands
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+
+# Lint code
+npm run lint
+
+# Format code (if Prettier is added)
+npm run format
+```
+
+## Key Implementation Notes
+
+1. **Component Architecture**: Use compound components pattern for complex UI elements
+2. **Performance**: Lazy load components and images, use React.memo for expensive components
+3. **Accessibility**: Implement proper ARIA labels, keyboard navigation, and screen reader support
+4. **SEO**: Add meta tags, structured data, and sitemap generation
+5. **Error Handling**: Implement error boundaries and loading states
+6. **Testing**: Set up unit tests with Jest and React Testing Library (optional)
+
+## Responsive Breakpoints
+- **Mobile**: `< 640px` (sm)
+- **Tablet**: `640px - 1024px` (md to lg)
+- **Desktop**: `1024px+` (lg and xl)
+
+## Browser Support
+- Chrome 90+
+- Firefox 90+
+- Safari 14+
+- Edge 90+
