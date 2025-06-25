@@ -7,6 +7,10 @@ export default {
     "./client/src/**/*.{js,ts,jsx,tsx}",
     "./client/index.html"
   ],
+  // Force all styles to be included (temporary debug)
+  safelist: [{
+    pattern: /.*/
+  }],
   theme: {
     extend: {
       borderRadius: {
