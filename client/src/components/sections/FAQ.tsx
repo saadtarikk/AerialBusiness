@@ -18,29 +18,33 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="faq" className="py-32 bg-dark-section relative overflow-hidden">
+      {/* Dark gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/10 to-pink-900/10"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.div variants={itemVariants}>
-            <Badge className="glassmorphism rounded-full px-6 py-2 mb-6 text-gray-600 text-sm font-medium">
+            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-white/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
               ❓ frequently asked
             </Badge>
           </motion.div>
           
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 leading-[1.1]">
             Got
+            <br />
             <span className="bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent">
-              {" "}questions?
+              questions?
             </span>
           </motion.h2>
           
-          <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.p variants={itemVariants} className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Here are the most common questions about our AI customer service platform.
           </motion.p>
         </motion.div>
@@ -54,17 +58,27 @@ export default function FAQ() {
         >
           <div className="space-y-6">
             {FAQ_ITEMS.map((item, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="glassmorphism border-white/25 bg-white/5 overflow-hidden">
+              <motion.div 
+                key={index} 
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.01,
+                  transition: { 
+                    duration: 0.2,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }
+                }}
+              >
+                <Card className="glassmorphism-card border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden shadow-lg">
                   <button
                     onClick={() => toggleItem(index)}
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-white/50 transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors duration-200"
                   >
-                    <span className="text-lg font-semibold text-gray-900 flex-1">
+                    <span className="text-lg font-semibold text-white flex-1">
                       {item.question}
                     </span>
                     <ChevronDown 
-                      className={`text-gray-600 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                      className={`text-white/60 transition-transform duration-300 flex-shrink-0 ml-4 ${
                         openItems.includes(index) ? 'rotate-180' : ''
                       }`}
                     />
@@ -76,11 +90,11 @@ export default function FAQ() {
                       height: openItems.includes(index) ? 'auto' : 0,
                       opacity: openItems.includes(index) ? 1 : 0
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-6">
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-white/70 leading-relaxed">
                         {item.answer}
                       </p>
                     </div>
