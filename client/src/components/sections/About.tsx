@@ -1,22 +1,11 @@
-import { useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 
 export default function About() {
-  const sectionRef = useRef(null);
-  const textRef = useRef(null);
-  
-  // Track scroll progress through the section
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Create parallax effect for background - moves slower than scroll
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  
-  // Track overall text completion for sticky behavior
-  const textCompletionProgress = useTransform(scrollYProgress, [0.2, 0.8], [0, 1]);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
 
   // Text content split into words
   const text = "Aireal is crafted to elevate how businesses showcase their AI solutions. With a focus on clean design, it helps brands engage and convert.";
@@ -28,71 +17,56 @@ export default function About() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
 
   const badgeVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      filter: 'blur(4px)'
-    },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: 'blur(0px)',
-      transition: { 
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1]
-      }
+      transition: { duration: 0.6, ease: 'easeOut' }
     }
   };
 
-  // Create progress values for each word based on scroll with slower progression
-  const getWordProgress = (index: number) => {
-    const totalWords = words.length;
-    const wordStartProgress = 0.3 + (index / totalWords) * 0.4; // Start at 30% scroll, finish at 70%
-    const wordEndProgress = 0.3 + ((index + 1) / totalWords) * 0.4;
-    return useTransform(scrollYProgress, [wordStartProgress, wordEndProgress], [0, 1]);
-  };
+  // Word animation cycle effect
+  useEffect(() => {
+    if (!isInView) return;
 
-  // Word component with scroll-based animation
-  const ScrollWord = ({ word, index }: { word: string; index: number }) => {
-    const progress = getWordProgress(index);
-    const opacity = useTransform(progress, [0, 1], [0.15, 1]);
-    const filter = useTransform(progress, [0, 1], ["blur(2px)", "blur(0px)"]);
-    
-    return (
-      <motion.span
-        className="inline-block mr-2 sm:mr-3"
-        style={{
-          opacity,
-          filter,
-        }}
-        transition={{
-          duration: 0.3,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-      >
-        {word}
-      </motion.span>
-    );
-  };
+    const animateWords = () => {
+      // Reset all words
+      setCurrentWordIndex(0);
+      
+      const animateNext = (index: number) => {
+        if (index < words.length) {
+          setCurrentWordIndex(index + 1);
+          setTimeout(() => animateNext(index + 1), 200);
+        } else {
+          // Reset after a pause and restart
+          setTimeout(() => {
+            setCurrentWordIndex(0);
+            setTimeout(() => animateWords(), 1000);
+          }, 2500);
+        }
+      };
+      
+      animateNext(0);
+    };
+
+    const timeout = setTimeout(animateWords, 800);
+    return () => clearTimeout(timeout);
+  }, [isInView, words.length]);
 
   return (
     <section 
-      ref={sectionRef}
       id="about" 
-      className="relative w-full min-h-[300vh] overflow-hidden bg-aireal-primary"
+      className="relative w-full max-w-[1920px] mx-auto overflow-hidden"
     >
-      {/* Parallax Background with gradients */}
-      <motion.div 
-        className="absolute inset-0 bg-aireal-primary"
-        style={{ y: backgroundY }}
-      >
+      {/* Background with gradients */}
+      <div className="absolute inset-0 bg-aireal-primary rounded-2xl">
         {/* Gradient Ellipse 1 */}
         <div 
           className="absolute w-[658px] h-[548px] rounded-full opacity-[0.08] blur-[80px]"
@@ -122,45 +96,50 @@ export default function About() {
             bottom: '-200px'
           }}
         />
-      </motion.div>
-
-      {/* Sticky Content Container - stays in place while text animates */}
-      <div className="sticky top-0 h-screen flex items-center justify-center z-10">
-        <motion.div
-          className="relative flex flex-col items-center justify-center px-10 lg:px-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          style={{
-            // Subtle movement to enhance the effect
-            y: useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
-          }}
-        >
-          {/* Title Container */}
-          <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
-            
-            {/* Badge */}
-            <motion.div
-              variants={badgeVariants}
-              className="inline-flex items-center px-5 py-2 border border-white/20 bg-white/10 rounded-full shadow-lg mb-5 glassmorphism"
-            >
-              <p className="text-sm font-medium text-white/90 lowercase">
-                about
-              </p>
-            </motion.div>
-
-            {/* Scroll-triggered Text */}
-            <div 
-              ref={textRef}
-              className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.2] text-white select-none"
-            >
-              {words.map((word, index) => (
-                <ScrollWord key={index} word={word} index={index} />
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Content Container */}
+      <motion.div
+        ref={ref}
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-10 py-20 lg:px-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Title Container */}
+        <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
+          
+          {/* Badge */}
+          <motion.div
+            variants={badgeVariants}
+            className="inline-flex items-center px-5 py-2 border border-white/20 bg-white/10 rounded-full shadow-lg mb-5 glassmorphism"
+          >
+            <p className="text-sm font-medium text-white/90 lowercase">
+              about
+            </p>
+          </motion.div>
+
+          {/* Animated Text */}
+          <div className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.2] text-white select-none">
+            {words.map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-2 sm:mr-3"
+                animate={{
+                  opacity: index < currentWordIndex ? 1 : 0.1,
+                  filter: index < currentWordIndex ? 'blur(0px)' : 'blur(2px)',
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
