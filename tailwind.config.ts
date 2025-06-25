@@ -1,48 +1,11 @@
 import type { Config } from "tailwindcss";
-import path from "path";
 
 export default {
   darkMode: ["class"],
   content: [
-    path.join(__dirname, "client/src/**/*.{js,ts,jsx,tsx}"),
-    path.join(__dirname, "client/index.html"),
-    path.join(__dirname, "client/src/components/**/*.{js,ts,jsx,tsx}"),
-    path.join(__dirname, "client/src/pages/**/*.{js,ts,jsx,tsx}"),
-    path.join(__dirname, "client/src/lib/**/*.{js,ts,jsx,tsx}"),
+    "./client/**/*.{js,ts,jsx,tsx,html}",
     "./client/src/**/*.{js,ts,jsx,tsx}",
-    "./client/**/*.{js,ts,jsx,tsx}",
     "./client/index.html"
-  ],
-  safelist: [
-    'bg-black',
-    'text-white',
-    'glassmorphism',
-    'glassmorphism-dark',
-    'glassmorphism-card',
-    'bg-dark-section',
-    'bg-dark-card',
-    'bg-dark-muted',
-    'text-aireal-primary',
-    'bg-aireal-primary',
-    'bg-aireal-background',
-    'text-aireal-purple',
-    'bg-aireal-purple',
-    'backdrop-blur-md',
-    'backdrop-blur-lg',
-    'backdrop-blur-xl',
-    'animate-fade-in-up',
-    'animate-char-fade-in',
-    'animate-float',
-    'animate-pulse-glow',
-    'animate-gradient-shift',
-    {
-      pattern: /bg-(gradient|aireal)-.*/,
-      variants: ['hover', 'focus', 'active']
-    },
-    {
-      pattern: /text-(gradient|aireal)-.*/,
-      variants: ['hover', 'focus', 'active']
-    }
   ],
   theme: {
     extend: {
