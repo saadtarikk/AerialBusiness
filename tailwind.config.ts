@@ -2,7 +2,31 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  safelist: [
+    'bg-dark-section',
+    'bg-dark-card', 
+    'bg-dark-muted',
+    'glassmorphism',
+    'glassmorphism-dark',
+    'glassmorphism-card',
+    'gradient-orb',
+    'parallax-img',
+    'text-aireal-primary',
+    'bg-aireal-primary',
+    'from-aireal-purple',
+    'to-gradient-pink',
+    'from-gradient-blue',
+    'to-aireal-purple',
+    'from-gradient-orange',
+    'to-gradient-pink',
+    'from-gradient-blue',
+    'to-gradient-orange',
+    'from-aireal-purple',
+    'to-gradient-blue',
+    'from-gradient-pink',
+    'to-gradient-orange'
+  ],
   theme: {
     extend: {
       borderRadius: {
