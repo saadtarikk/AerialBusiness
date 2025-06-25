@@ -13,7 +13,7 @@ export default function About() {
   });
 
   // Create parallax effect for background
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   // Text content split into words
   const text = "Aireal is crafted to elevate how businesses showcase their AI solutions. With a focus on clean design, it helps brands engage and convert.";
@@ -120,10 +120,10 @@ export default function About() {
         />
       </motion.div>
 
-      {/* Fixed Content Container */}
-      <div className="fixed inset-0 h-screen flex items-center justify-center pointer-events-none">
+      {/* Sticky Content Container */}
+      <div className="sticky top-0 h-screen flex items-center justify-center z-10">
         <motion.div
-          className="relative z-10 flex flex-col items-center justify-center px-10 lg:px-20 pointer-events-auto"
+          className="relative flex flex-col items-center justify-center px-10 lg:px-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
