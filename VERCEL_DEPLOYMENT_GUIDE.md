@@ -27,7 +27,7 @@
    - **Build Command:** Leave empty (auto-detected)
    - **Output Directory:** Leave empty (auto-detected as `dist`)
    - **Install Command:** Leave empty (auto-detected)
-   - **Root Directory:** `client` (important!)
+   - **Root Directory:** Leave empty - use root directory (important!)
 
 3. **Environment Variables (if needed later):**
    - Add any environment variables in the Vercel dashboard

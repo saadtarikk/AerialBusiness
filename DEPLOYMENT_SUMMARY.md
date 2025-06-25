@@ -27,7 +27,7 @@ git push origin main
 ### 2. Deploy on Vercel
 - Go to vercel.com
 - Import your Git repository
-- **Important:** Set Root Directory to `client`
+- **Important:** Leave Root Directory empty (use root directory)
 - Let Vercel auto-detect all other settings
 - Deploy
 

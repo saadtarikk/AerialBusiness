@@ -30,7 +30,7 @@ npm run build
 
 ## Project Structure
 
-- `/client` - React frontend application
+- `/src` - React frontend application source code
 - `/server` - Express.js backend
 - `/shared` - Shared TypeScript schemas
 - `/components` - Reusable UI components

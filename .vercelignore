@@ -8,7 +8,4 @@ shared
 *.md
 .replit
 drizzle.config.ts
-tsconfig.json
-postcss.config.js
-tailwind.config.ts
 package-lock.json

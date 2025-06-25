@@ -14,7 +14,7 @@ If download continues to fail, you can recreate the project:
 
 1. Create a new React + TypeScript project with Vite
 2. Install the dependencies listed in `package.json`
-3. Copy the source code from the `/client`, `/server`, and `/shared` folders
+3. Copy the source code from the project root directory
 4. Copy configuration files: `tailwind.config.ts`, `vite.config.ts`, `tsconfig.json`
 
 ## Option 3: Git Clone (Recommended)
@@ -25,7 +25,7 @@ Since this is a Git repository, you can:
 3. Start with `npm run dev`
 
 ## Key Files to Copy
-- `/client/src/` - All React components and pages
+- `/src/` - All React components and pages
 - `/server/` - Express.js backend
 - `/shared/` - TypeScript schemas
 - `package.json` - Dependencies

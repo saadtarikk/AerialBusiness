@@ -14,7 +14,7 @@
 
 2. **Build Configuration**
    - Framework: Vite (auto-detected)
-   - Root Directory: `client`
+   - Root Directory: Leave empty (use root directory)
    - Build Command: Leave empty (auto-detected)
    - Output Directory: Leave empty (auto-detected)
    - Install Command: Leave empty (auto-detected)
