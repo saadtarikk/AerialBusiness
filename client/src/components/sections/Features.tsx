@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Bot, TrendingUp, Users, Shield, Settings, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { containerVariants, itemVariants, cardVariants } from '@/components/animations/variants';
 import { FEATURES } from '@/lib/constants';
 
 const iconMap = {
@@ -14,31 +13,83 @@ const iconMap = {
   Clock
 };
 
+// Enhanced animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    filter: 'blur(4px)'
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { 
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 40,
+    scale: 0.95,
+    filter: 'blur(4px)'
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { 
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
 export default function Features() {
   return (
-    <section id="features" className="py-20 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-32 bg-white relative overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-pink-50/30"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.div variants={itemVariants}>
-            <Badge className="glassmorphism rounded-full px-6 py-2 mb-6 text-gray-600 text-sm font-medium">
+            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-gray-600 text-sm font-medium border border-gray-200/50 bg-white/60 backdrop-blur-sm">
               ⚡ powerful features
             </Badge>
           </motion.div>
           
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 mb-8 leading-[1.1]">
             Everything you need for
+            <br />
             <span className="bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent">
-              {" "}exceptional service
+              exceptional service
             </span>
           </motion.h2>
           
-          <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Our comprehensive AI platform provides all the tools and intelligence needed to deliver world-class customer support.
           </motion.p>
         </motion.div>
@@ -62,13 +113,28 @@ export default function Features() {
             ];
             
             return (
-              <motion.div key={index} variants={cardVariants}>
-                <Card className="glassmorphism hover:scale-105 transition-transform duration-300 border-white/25 bg-white/5">
+              <motion.div 
+                key={index} 
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5,
+                  transition: { 
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }
+                }}
+                className="group"
+              >
+                <Card className="h-full glassmorphism border-white/20 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500">
                   <CardContent className="p-8">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${gradientClasses[index]} rounded-xl flex items-center justify-center mb-6`}>
-                      <IconComponent className="text-white text-xl" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                    <motion.div 
+                      className={`w-14 h-14 bg-gradient-to-r ${gradientClasses[index]} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                      whileHover={{ rotate: 5 }}
+                    >
+                      <IconComponent className="text-white text-2xl" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">{feature.title}</h3>
                     <p className="text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>

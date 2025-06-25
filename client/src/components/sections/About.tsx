@@ -43,20 +43,20 @@ export default function About() {
       const animateNext = (index: number) => {
         if (index < words.length) {
           setCurrentWordIndex(index + 1);
-          setTimeout(() => animateNext(index + 1), 150);
+          setTimeout(() => animateNext(index + 1), 200);
         } else {
           // Reset after a pause and restart
           setTimeout(() => {
             setCurrentWordIndex(0);
-            setTimeout(() => animateWords(), 500);
-          }, 3000);
+            setTimeout(() => animateWords(), 1000);
+          }, 2500);
         }
       };
       
       animateNext(0);
     };
 
-    const timeout = setTimeout(animateWords, 500);
+    const timeout = setTimeout(animateWords, 800);
     return () => clearTimeout(timeout);
   }, [isInView, words.length]);
 
@@ -120,18 +120,22 @@ export default function About() {
           </motion.div>
 
           {/* Animated Text */}
-          <div className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white select-none">
+          <div className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.2] text-white select-none">
             {words.map((word, index) => (
-              <span
+              <motion.span
                 key={index}
-                className={`inline-block mr-1 transition-all duration-200 ease-out ${
-                  index < currentWordIndex 
-                    ? 'opacity-100 blur-0' 
-                    : 'opacity-10 blur-sm'
-                }`}
+                className="inline-block mr-2 sm:mr-3"
+                animate={{
+                  opacity: index < currentWordIndex ? 1 : 0.1,
+                  filter: index < currentWordIndex ? 'blur(0px)' : 'blur(2px)',
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
               >
                 {word}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
