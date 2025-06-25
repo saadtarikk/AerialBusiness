@@ -7,7 +7,7 @@ import { containerVariants, itemVariants } from '@/components/animations/variant
 import { FAQ_ITEMS, TESTIMONIALS } from '@/lib/constants';
 
 export default function FAQ() {
-  const [openItems, setOpenItems] = useState<number[]>([0]);
+  const [openItems, setOpenItems] = useState<number[]>([]);
 
   const toggleItem = (index: number) => {
     setOpenItems(prev =>

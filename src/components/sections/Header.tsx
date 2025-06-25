@@ -65,7 +65,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
                 onClick={() => scrollToSection(link.href)}
-                className={`text-aireal-primary/80 hover:text-aireal-primary transition-all duration-200 font-medium ${
+                className={`text-muted-foreground hover:text-foreground transition-all duration-200 font-medium ${
                   isScrolled ? 'text-sm' : 'text-base'
                 }`}
               >
@@ -103,11 +103,14 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 h-full w-80 max-w-[calc(100vw-2rem)] bg-white shadow-2xl p-6 pt-20 z-[90] lg:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+            style={{
+              top: isScrolled ? '76px' : '100px',
+            }}
+            className="fixed left-6 right-6 glassmorphism rounded-xl border border-white/25 bg-white/10 p-6 z-[90] lg:hidden"
           >
             <div className="flex flex-col space-y-6">
               {NAVIGATION_LINKS.map((link, index) => (
@@ -117,7 +120,7 @@ export default function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-aireal-primary/80 hover:text-aireal-primary transition-colors text-lg text-left font-medium"
+                  className="text-muted-foreground hover:text-foreground transition-colors text-lg text-left font-medium"
                 >
                   {link.label}
                 </motion.button>

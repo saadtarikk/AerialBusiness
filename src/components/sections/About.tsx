@@ -67,77 +67,79 @@ export default function About() {
   };
 
   return (
-    <motion.section
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      id="about" 
-      className="relative w-full max-w-[1920px] mx-auto overflow-hidden"
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
-    >
-      <div className="absolute inset-0 bg-aireal-primary rounded-2xl">
-        <motion.div 
-          className="absolute w-[658px] h-[548px] rounded-full opacity-[0.08] blur-[80px]"
-          style={{
-            background: 'linear-gradient(143.24deg, rgb(128, 170, 253), rgb(211, 123, 255) 31.09%, rgb(252, 172, 132) 70.46%, rgb(255, 130, 225))',
-            left: '-246px',
-            top: '-186px',
-            x: parallaxX1,
-            y: parallaxY1,
-            transition: 'transform 0.2s ease-out'
-          }}
-        />
-        
-        <motion.div 
-          className="absolute w-[658px] h-[548px] rounded-full opacity-[0.06] blur-[80px]"
-          style={{
-            background: 'linear-gradient(140.02deg, #EFE8F6, #D588FB 60.83%, rgb(255, 130, 225))',
-            right: '-96px',
-            bottom: '-100px',
-            x: parallaxX2,
-            y: parallaxY2,
-            transition: 'transform 0.2s ease-out'
-          }}
-        />
-      </div>
-
-      <div
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-10 py-20 lg:px-20"
+    <section className="flex flex-col items-center justify-start w-full p-4 bg-dark-section">
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        id="about"
+        className="relative w-full max-w-[1920px] mx-auto overflow-hidden"
+        ref={ref}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
       >
-        <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
-          <motion.div
-            variants={badgeVariants}
-            whileHover={{ scale: 1.05, y: -2, rotate: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="inline-flex items-center px-5 py-2 border border-white/20 bg-white/10 rounded-full shadow-lg mb-5 glassmorphism"
-          >
-            <p className="text-sm font-medium text-white/90 lowercase">
-              about
-            </p>
-          </motion.div>
-
-          <motion.p 
-            className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.26] text-white select-none"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {words.map((word, index) => (
-              <motion.span
-                key={index}
-                variants={wordVariants}
-                className="inline-block mr-2 sm:mr-3"
-                whileHover={{ scale: 1.1, y: -2, color: '#ffffff' }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+        <div className="absolute inset-0 bg-aireal-primary rounded-2xl">
+          <motion.div 
+            className="absolute w-[658px] h-[548px] rounded-full opacity-[0.08] blur-[80px]"
+            style={{
+              background: 'linear-gradient(143.24deg, rgb(128, 170, 253), rgb(211, 123, 255) 31.09%, rgb(252, 172, 132) 70.46%, rgb(255, 130, 225))',
+              left: '-246px',
+              top: '-186px',
+              x: parallaxX1,
+              y: parallaxY1,
+              transition: 'transform 0.2s ease-out'
+            }}
+          />
+          
+          <motion.div 
+            className="absolute w-[658px] h-[548px] rounded-full opacity-[0.06] blur-[80px]"
+            style={{
+              background: 'linear-gradient(140.02deg, #EFE8F6, #D588FB 60.83%, rgb(255, 130, 225))',
+              right: '-96px',
+              bottom: '-100px',
+              x: parallaxX2,
+              y: parallaxY2,
+              transition: 'transform 0.2s ease-out'
+            }}
+          />
         </div>
-      </div>
-    </motion.section>
+
+        <div
+          className="relative z-10 flex flex-col items-center justify-center min-h-screen px-10 py-20 lg:px-20"
+        >
+          <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
+            <motion.div
+              variants={badgeVariants}
+              whileHover={{ scale: 1.05, y: -2, rotate: -2 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="inline-flex items-center px-5 py-2 border border-white/20 bg-white/10 rounded-full shadow-lg mb-5 glassmorphism"
+            >
+              <p className="text-sm font-medium text-white/90 lowercase">
+                about
+              </p>
+            </motion.div>
+
+            <motion.p 
+              className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.26] text-white select-none"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  className="inline-block mr-2 sm:mr-3"
+                  whileHover={{ scale: 1.1, y: -2, color: '#ffffff' }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.p>
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Bot, Calendar, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Bot, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
@@ -21,85 +21,74 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-aireal-primary relative overflow-hidden">
-      {/* CTA Section */}
-      <div className="py-20 relative z-10">
-        {/* Gradient backgrounds */}
-        <div className="gradient-orb w-96 h-96 -top-48 -left-48 bg-gradient-to-r from-gradient-blue to-gradient-purple opacity-20"></div>
-        <div className="gradient-orb w-80 h-80 -bottom-40 -right-40 bg-gradient-to-r from-gradient-orange to-gradient-pink opacity-15"></div>
+    <footer className="flex flex-col items-center justify-start w-full p-4 bg-dark-section">
+      <div className="w-full max-w-[1920px] mx-auto bg-[#1B0C25] rounded-2xl p-10 md:p-16 relative overflow-hidden">
         
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="space-y-8"
-          >
-            <motion.div variants={itemVariants}>
-              <Badge className="glassmorphism-dark rounded-full px-6 py-2 text-white/90 text-sm font-medium">
-                🚀 Join the AI Revolution
-              </Badge>
-            </motion.div>
-            
-            <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Ready to start your AI journey
-              <span className="bg-gradient-to-r from-gradient-blue to-gradient-pink bg-clip-text text-transparent">
-                {" "}with us?
-              </span>
-            </motion.h2>
-            
-            <motion.p variants={itemVariants} className="text-xl text-white/80 max-w-3xl mx-auto">
-              Transform your customer service today and deliver exceptional experiences that drive growth.
-            </motion.p>
-            
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+        <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-blue to-gradient-pink opacity-25 blur-[80px] -left-48 -top-32"></div>
+        <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-orange to-gradient-pink opacity-20 blur-[80px] -right-32 -bottom-48"></div>
+
+        <div className="relative z-10 flex flex-col items-start text-left mb-24">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="space-y-8 w-full"
             >
-              <motion.div variants={buttonVariants} whileHover="hover">
-                <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-aireal-purple to-gradient-pink text-white px-8 py-4 text-lg font-semibold shadow-lg"
-                >
-                  Get Started Free
-                </Button>
+              <motion.div variants={itemVariants}>
+                <Badge className="bg-white text-[#1B0C25] rounded-full px-6 py-2 text-sm font-medium border border-[#D588FB] shadow-[0px_2px_5px_rgba(0,0,0,0.07),_0px_8px_8px_rgba(0,0,0,0.06),_0px_19px_11px_rgba(0,0,0,0.04)]">
+                  Join the AI Revolution
+                </Badge>
               </motion.div>
-              <motion.div variants={buttonVariants} whileHover="hover">
-                <Button 
-                  variant="outline"
-                  size="lg"
-                  className="glassmorphism-dark text-white border-white/25 px-8 py-4 text-lg font-semibold hover:bg-white/10"
-                >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Book a Demo
-                </Button>
+              
+              <motion.h2 variants={itemVariants} className="text-[76px] font-medium text-white leading-tight max-w-4xl">
+                Ready to start your AI <br /> journey with us?
+              </motion.h2>
+              
+              <motion.div 
+                variants={itemVariants}
+                className="flex flex-col sm:flex-row items-start justify-start space-y-4 sm:space-y-0 sm:space-x-6"
+              >
+                <motion.div variants={buttonVariants} whileHover="hover">
+                  <Button 
+                    size="lg"
+                    className="bg-[#1B0C25] text-white px-8 py-4 text-lg font-semibold shadow-[inset_0px_1px_2px_rgba(255,255,255,0.4),_0px_1px_2px_rgba(0,0,0,0.1)] backdrop-blur-sm border border-transparent hover:bg-black"
+                  >
+                    Get Started
+                  </Button>
+                </motion.div>
+                <motion.div variants={buttonVariants} whileHover="hover">
+                  <Button 
+                    variant="outline"
+                    size="lg"
+                    className="bg-white text-black border-gray-200 px-8 py-4 text-lg font-semibold hover:bg-gray-100"
+                  >
+                    Book a Demo
+                  </Button>
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
         </div>
-      </div>
-      
-      {/* Footer Content */}
-      <div className="border-t border-white/10 py-12">
-        <div className="container mx-auto px-4">
+        
+        <hr className="border-white/10 my-16" />
+
+        <div className="container mx-auto px-0">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8"
+            className="flex flex-col md:flex-row justify-between gap-8"
           >
-            {/* Company Info */}
-            <motion.div variants={itemVariants} className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-aireal-purple to-gradient-pink rounded-lg flex items-center justify-center">
-                  <Bot className="text-white text-sm" />
+            <motion.div variants={itemVariants} className="flex-1 max-w-sm">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                  <Bot className="text-white text-xl" />
                 </div>
-                <span className="text-xl font-bold text-white">{COMPANY_INFO.name}</span>
+                <span className="text-3xl font-medium text-white">AiReal</span>
               </div>
-              <p className="text-white/80 mb-6 max-w-md">
-                Empowering businesses with AI-driven customer service solutions that deliver exceptional experiences and drive growth.
+              <p className="text-white/70 mb-6">
+                Manage Ai effortlessly
               </p>
               <div className="flex space-x-4">
                 {SOCIAL_LINKS.map((social, index) => {
@@ -111,50 +100,52 @@ export default function Footer() {
                       className="text-white/60 hover:text-white transition-colors"
                       aria-label={social.label}
                     >
-                      <IconComponent className="text-xl" />
+                      <IconComponent className="h-5 w-5" />
                     </a>
                   );
                 })}
               </div>
             </motion.div>
             
-            {/* Use Links */}
-            <motion.div variants={itemVariants}>
-              <h4 className="text-white font-semibold mb-4">Use Links</h4>
-              <ul className="space-y-2">
-                {NAVIGATION_LINKS.map((link, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-white/60 hover:text-white transition-colors text-left"
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
-                <li>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </motion.div>
-            
-            {/* Company */}
-            <motion.div variants={itemVariants}>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li className="text-white/60 text-sm">105 North 1st Street, #28</li>
-                <li className="text-white/60 text-sm">San Jose, CA 94748</li>
-                <li className="text-white/60 text-sm mt-4">{COMPANY_INFO.email}</li>
-                <li className="text-white/60 text-sm">{COMPANY_INFO.phone}</li>
-              </ul>
-            </motion.div>
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-left">
+              <motion.div variants={itemVariants}>
+                <h4 className="text-white font-semibold mb-4">Use Link</h4>
+                <ul className="space-y-3">
+                  {NAVIGATION_LINKS.map((link, index) => (
+                    <li key={index}>
+                      <button
+                        onClick={() => scrollToSection(link.href)}
+                        className="text-white/60 hover:text-white transition-colors text-left"
+                      >
+                        {link.label}
+                      </button>
+                    </li>
+                  ))}
+                   <li>
+                      <a href="/contact" className="text-white/60 hover:text-white transition-colors">
+                        Contact
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/blog" className="text-white/60 hover:text-white transition-colors">
+                        Blog
+                      </a>
+                    </li>
+                     <li>
+                      <a href="/404" className="text-white/60 hover:text-white transition-colors">
+                        404
+                      </a>
+                    </li>
+                </ul>
+              </motion.div>
+              
+              <motion.div variants={itemVariants}>
+                <h4 className="text-white font-semibold mb-4">Company</h4>
+                <ul className="space-y-2">
+                  <li className="text-white/60 text-sm">105 North 1st Street, #28,<br/>San Jose, CA 94748</li>
+                </ul>
+              </motion.div>
+            </div>
           </motion.div>
           
           <motion.div
@@ -165,17 +156,11 @@ export default function Footer() {
             className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between"
           >
             <p className="text-white/60 text-sm">
-              © 2024 {COMPANY_INFO.name}. All rights reserved.
+              © 2025 Design & Developed by <a href="https://x.com/hello_amani" target="_blank" rel="noopener" className="underline hover:text-white">Amani</a>
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
+              <a href="/privacy-policy" className="text-white/60 hover:text-white transition-colors text-sm">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                Cookie Policy
               </a>
             </div>
           </motion.div>
