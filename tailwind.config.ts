@@ -1,9 +1,16 @@
 import type { Config } from "tailwindcss";
+import path from "path";
 
 export default {
   darkMode: ["class"],
   content: [
+    path.join(__dirname, "client/src/**/*.{js,ts,jsx,tsx}"),
+    path.join(__dirname, "client/index.html"),
+    path.join(__dirname, "client/src/components/**/*.{js,ts,jsx,tsx}"),
+    path.join(__dirname, "client/src/pages/**/*.{js,ts,jsx,tsx}"),
+    path.join(__dirname, "client/src/lib/**/*.{js,ts,jsx,tsx}"),
     "./client/src/**/*.{js,ts,jsx,tsx}",
+    "./client/**/*.{js,ts,jsx,tsx}",
     "./client/index.html"
   ],
   safelist: [
