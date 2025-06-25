@@ -9,11 +9,14 @@ export default function About() {
   // Track scroll progress through the section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.7", "end 0.3"]
+    offset: ["start end", "end start"]
   });
 
-  // Create parallax effect for background
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // Create parallax effect for background - moves slower than scroll
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  
+  // Track overall text completion for sticky behavior
+  const textCompletionProgress = useTransform(scrollYProgress, [0.2, 0.8], [0, 1]);
 
   // Text content split into words
   const text = "Aireal is crafted to elevate how businesses showcase their AI solutions. With a focus on clean design, it helps brands engage and convert.";
@@ -48,11 +51,12 @@ export default function About() {
     }
   };
 
-  // Create progress values for each word based on scroll
+  // Create progress values for each word based on scroll with slower progression
   const getWordProgress = (index: number) => {
-    const startProgress = index / words.length * 0.8;
-    const endProgress = (index + 1) / words.length * 0.8;
-    return useTransform(scrollYProgress, [startProgress, endProgress], [0, 1]);
+    const totalWords = words.length;
+    const wordStartProgress = 0.3 + (index / totalWords) * 0.4; // Start at 30% scroll, finish at 70%
+    const wordEndProgress = 0.3 + ((index + 1) / totalWords) * 0.4;
+    return useTransform(scrollYProgress, [wordStartProgress, wordEndProgress], [0, 1]);
   };
 
   // Word component with scroll-based animation
@@ -82,7 +86,7 @@ export default function About() {
     <section 
       ref={sectionRef}
       id="about" 
-      className="relative w-full min-h-[200vh] overflow-hidden bg-aireal-primary"
+      className="relative w-full min-h-[300vh] overflow-hidden bg-aireal-primary"
     >
       {/* Parallax Background with gradients */}
       <motion.div 
@@ -120,13 +124,17 @@ export default function About() {
         />
       </motion.div>
 
-      {/* Sticky Content Container */}
+      {/* Sticky Content Container - stays in place while text animates */}
       <div className="sticky top-0 h-screen flex items-center justify-center z-10">
         <motion.div
           className="relative flex flex-col items-center justify-center px-10 lg:px-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          style={{
+            // Subtle movement to enhance the effect
+            y: useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
+          }}
         >
           {/* Title Container */}
           <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
