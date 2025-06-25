@@ -3,7 +3,7 @@ import { Check } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { containerVariants, itemVariants, cardVariants } from '@/components/animations/variants';
+import { containerVariants, itemVariants, cardVariants, badgeVariants, buttonVariants } from '@/components/animations/variants';
 import { PRICING_PLANS } from '@/lib/constants';
 
 export default function Pricing() {

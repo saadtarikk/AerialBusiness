@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { containerVariants, itemVariants } from '@/components/animations/variants';
 import { NAVIGATION_LINKS } from '@/lib/constants';
 
 export default function Header() {
