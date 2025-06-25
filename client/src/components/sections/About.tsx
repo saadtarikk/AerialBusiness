@@ -12,6 +12,9 @@ export default function About() {
     offset: ["start 0.7", "end 0.3"]
   });
 
+  // Create parallax effect for background
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   // Text content split into words
   const text = "Aireal is crafted to elevate how businesses showcase their AI solutions. With a focus on clean design, it helps brands engage and convert.";
   const words = text.split(' ');
@@ -81,8 +84,11 @@ export default function About() {
       id="about" 
       className="relative w-full min-h-[200vh] overflow-hidden bg-aireal-primary"
     >
-      {/* Background with gradients */}
-      <div className="absolute inset-0 bg-aireal-primary">
+      {/* Parallax Background with gradients */}
+      <motion.div 
+        className="absolute inset-0 bg-aireal-primary"
+        style={{ y: backgroundY }}
+      >
         {/* Gradient Ellipse 1 */}
         <div 
           className="absolute w-[658px] h-[548px] rounded-full opacity-[0.08] blur-[80px]"
@@ -112,12 +118,12 @@ export default function About() {
             bottom: '-200px'
           }}
         />
-      </div>
+      </motion.div>
 
-      {/* Sticky Content Container */}
-      <div className="sticky top-0 h-screen flex items-center justify-center">
+      {/* Fixed Content Container */}
+      <div className="fixed inset-0 h-screen flex items-center justify-center pointer-events-none">
         <motion.div
-          className="relative z-10 flex flex-col items-center justify-center px-10 lg:px-20"
+          className="relative z-10 flex flex-col items-center justify-center px-10 lg:px-20 pointer-events-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
