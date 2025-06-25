@@ -8,8 +8,8 @@ import { TESTIMONIALS } from '@/lib/constants';
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-32 bg-dark-section relative overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-pink-900/10 to-blue-900/10"></div>
+      {/* Dark gradient background with purple tint */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/8 via-violet-900/6 to-indigo-900/8"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
