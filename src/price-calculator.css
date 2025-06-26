@@ -1,0 +1,10 @@
+/* src/price-calculator.css */
+.select2-selection__rendered {
+    position: relative;
+    z-index: 10;
+}
+
+.select2-search--inline {
+    position: relative;
+    z-index: 1;
+} 
