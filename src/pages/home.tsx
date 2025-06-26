@@ -1,23 +1,26 @@
+import React, { lazy } from 'react';
 import Header from '@/components/sections/Header';
 import Hero from '@/components/sections/Hero';
-import Features from '@/components/sections/Features';
-import About from '@/components/sections/About';
-import Testimonials from '@/components/sections/Testimonials';
-import Pricing from '@/components/sections/Pricing';
-import FAQ from '@/components/sections/FAQ';
-import Footer from '@/components/sections/Footer';
+import LazyLoad from '@/components/animations/LazyLoad';
+
+const Features = lazy(() => import('@/components/sections/Features'));
+const About = lazy(() => import('@/components/sections/About'));
+const Testimonials = lazy(() => import('@/components/sections/Testimonials'));
+const Pricing = lazy(() => import('@/components/sections/Pricing'));
+const FAQ = lazy(() => import('@/components/sections/FAQ'));
+const Footer = lazy(() => import('@/components/sections/Footer'));
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <Features />
-      <About />
-      <Testimonials />
-      <Pricing />
-      <FAQ />
-      <Footer />
+      <LazyLoad component={Features} />
+      <LazyLoad component={About} />
+      <LazyLoad component={Testimonials} />
+      <LazyLoad component={Pricing} />
+      <LazyLoad component={FAQ} />
+      <LazyLoad component={Footer} />
     </div>
   );
 }
