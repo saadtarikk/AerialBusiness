@@ -29,12 +29,10 @@ const itemVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: 30,
-    filter: 'blur(4px)'
   },
   visible: { 
     opacity: 1, 
     y: 0,
-    filter: 'blur(0px)',
     transition: { 
       duration: 0.6,
       ease: [0.25, 0.1, 0.25, 1]
@@ -47,13 +45,11 @@ const cardVariants: Variants = {
     opacity: 0, 
     y: 40,
     scale: 0.95,
-    filter: 'blur(4px)'
   },
   visible: { 
     opacity: 1, 
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
     transition: { 
       duration: 0.7,
       ease: [0.25, 0.1, 0.25, 1]
