@@ -21,7 +21,7 @@ export default function Pricing() {
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants}>
-            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-white/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
+            <Badge variant="glass" className="mb-8">
               💰 pricing
             </Badge>
           </motion.div>
@@ -62,7 +62,7 @@ export default function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Badge className="bg-gradient-to-r from-aireal-purple to-gradient-pink text-white px-6 py-2 rounded-full text-sm font-semibold glassmorphism">
+                  <Badge variant="popular">
                     Most Popular
                   </Badge>
                 </div>
@@ -94,7 +94,7 @@ export default function Pricing() {
                     className={`w-full py-3 transition-transform hover:scale-105 glassmorphism ${
                       plan.popular 
                         ? 'bg-gradient-to-r from-aireal-purple to-gradient-pink text-white'
-                        : 'bg-gradient-to-r from-white/10 to-white/5 text-white border border-white/20'
+                        : 'bg-aireal-primary text-white'
                     }`}
                   >
                     {plan.price ? 'Get Started' : 'Contact Sales'}

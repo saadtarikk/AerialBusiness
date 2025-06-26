@@ -96,7 +96,7 @@ export default function Hero() {
             <motion.div
               variants={badgeVariants}
             >
-              <Badge className="glassmorphism rounded-full px-6 py-2.5 text-black/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
+              <Badge variant="glass_hero">
                 <svg className="w-3 h-3 flex-shrink-0 fill-black mr-2" viewBox="0 0 16 16">
                   <circle cx="8" cy="8" r="8" fill="currentColor" />
                 </svg>

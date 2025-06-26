@@ -20,7 +20,7 @@ export default function Testimonials() {
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants}>
-            <Badge className="glassmorphism rounded-full px-6 py-2 mb-8 text-white/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
+            <Badge variant="glass" className="mb-8">
               ⭐ testimonials
             </Badge>
           </motion.div>

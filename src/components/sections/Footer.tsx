@@ -36,7 +36,7 @@ export default function Footer() {
               className="space-y-8 w-full"
             >
               <motion.div variants={itemVariants}>
-                <Badge className="bg-white text-[#1B0C25] rounded-full px-6 py-2 text-sm font-medium border border-[#D588FB] shadow-[0px_2px_5px_rgba(0,0,0,0.07),_0px_8px_8px_rgba(0,0,0,0.06),_0px_19px_11px_rgba(0,0,0,0.04)]">
+                <Badge variant="footer">
                   Join the AI Revolution
                 </Badge>
               </motion.div>
