@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
+import heroBg from '@/assets/vkYLURkIQB3wgCJUD4m2MGdbKg.png';
+import dashboardPreview from '@/assets/YgUzdX0IbuuAdlAK9HhOXgkq8.png';
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -75,7 +77,7 @@ export default function Hero() {
         {/* Background Image */}
         <div className="absolute inset-0 rounded-2xl">
           <img
-            src="https://framerusercontent.com/images/vkYLURkIQB3wgCJUD4m2MGdbKg.png"
+            src={heroBg}
             alt="Sky background"
             className="w-full h-full object-cover rounded-2xl"
           />
@@ -172,7 +174,7 @@ export default function Hero() {
                 }}
               >
                 <img
-                  src="https://framerusercontent.com/images/YgUzdX0IbuuAdlAK9HhOXgkq8.png"
+                  src={dashboardPreview}
                   alt="Aireal Dashboard Preview"
                   className="w-full h-auto rounded-2xl object-cover"
                 />

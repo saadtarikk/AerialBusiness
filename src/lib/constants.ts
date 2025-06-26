@@ -1,3 +1,7 @@
+import avatarSarah from '@/assets/avatar-sarah-johnson.png';
+import avatarMaria from '@/assets/avatar-maria-rodriguez.png';
+import avatarDavid from '@/assets/avatar-david-chen.png';
+
 export const COMPANY_INFO = {
   name: 'Aireal',
   tagline: 'AI-powered Customer Service Platform',
@@ -58,21 +62,21 @@ export const TESTIMONIALS = [
   {
     name: 'Sarah Johnson',
     role: 'CEO, TechCorp',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100',
+    avatar: avatarSarah,
     text: 'Aireal transformed our customer service completely. Response times dropped by 60% and customer satisfaction is at an all-time high.',
     rating: 5
   },
   {
     name: 'Maria Rodriguez',
     role: 'CTO, Innovation Labs',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100',
+    avatar: avatarMaria,
     text: 'The AI capabilities are incredible. It handles complex queries with ease and learns from every interaction.',
     rating: 5
   },
   {
     name: 'David Chen',
     role: 'VP Operations, ScaleUp',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100',
+    avatar: avatarDavid,
     text: 'Integration was seamless and the results were immediate. Our team can now focus on complex issues while AI handles routine queries.',
     rating: 5
   }
