@@ -35,6 +35,15 @@ export default function Hero() {
     }
   };
   
+  const descriptionVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20, delay: 0.4 }
+    }
+  };
+
   const badgeVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -59,10 +68,9 @@ export default function Hero() {
 
   const titleWords = ['The', 'AI-powered', 'Customer', 'Service', 'Platform'];
   const description = "Aireal helps you connect, manage, and optimize your AI tools effortlessly. Unlock powerful insights and automate complex processes with ease.";
-  const descriptionWords = description.split(' ');
 
   return (
-    <div className="flex flex-col items-center justify-start w-full p-4 bg-dark-section">
+    <div className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
       <header className="relative w-full max-w-[1920px] mx-auto overflow-hidden rounded-2xl min-h-screen pt-[120px]">
         {/* Background Image */}
         <div className="absolute inset-0 rounded-2xl">
@@ -81,12 +89,12 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <div className="flex flex-col gap-8 max-w-4xl">
+          <div className="flex flex-col items-center lg:items-start gap-8 max-w-4xl">
             {/* Badge */}
             <motion.div
               variants={badgeVariants}
             >
-              <Badge className="glassmorphism rounded-full px-6 py-2.5 mb-8 text-black/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
+              <Badge className="glassmorphism rounded-full px-6 py-2.5 text-black/90 text-sm font-medium border border-white/10 bg-white/5 backdrop-blur-sm">
                 <svg className="w-3 h-3 flex-shrink-0 fill-black mr-2" viewBox="0 0 16 16">
                   <circle cx="8" cy="8" r="8" fill="currentColor" />
                 </svg>
@@ -95,7 +103,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Title */}
-            <motion.h1 className="text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-aireal-primary">
+            <motion.h1 className="text-[42px] lg:text-7xl font-medium leading-tight text-aireal-primary text-center lg:text-left">
               {titleWords.map((word, index) => (
                 <motion.span
                   key={index}
@@ -109,31 +117,17 @@ export default function Hero() {
             </motion.h1>
 
             {/* Description */}
-            <motion.p className="text-lg lg:text-xl font-normal leading-relaxed text-aireal-primary max-w-3xl">
-              {descriptionWords.map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={charVariants}
-                  custom={index}
-                  className="inline-block"
-                  style={{ 
-                    whiteSpace: word === ' ' ? 'pre' : 'normal' 
-                  }}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{
-                    delay: 0.8 + (index * 0.02)
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
+            <motion.p
+              className="text-lg lg:text-xl font-normal leading-relaxed text-aireal-primary max-w-3xl text-center lg:text-left"
+              variants={descriptionVariants}
+            >
+              {description}
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               variants={buttonVariants}
-              className="flex flex-col sm:flex-row gap-4 items-start"
+              className="flex flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.div
                 whileHover={{ y: -2 }}

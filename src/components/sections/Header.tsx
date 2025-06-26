@@ -65,7 +65,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
                 onClick={() => scrollToSection(link.href)}
-                className={`text-muted-foreground hover:text-foreground transition-all duration-200 font-medium ${
+                className={`text-white/80 hover:text-white transition-all duration-200 font-medium ${
                   isScrolled ? 'text-sm' : 'text-base'
                 }`}
               >
@@ -120,7 +120,7 @@ export default function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-foreground transition-colors text-lg text-left font-medium"
+                  className="text-white/80 hover:text-white transition-colors text-lg text-left font-medium"
                 >
                   {link.label}
                 </motion.button>

@@ -40,7 +40,7 @@ export default function FAQ() {
                 </Badge>
               </motion.div>
               
-              <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 leading-[1.1]">
+              <motion.h2 variants={itemVariants} className="text-[40px] lg:text-6xl font-medium text-white mb-8 leading-[1.1]">
                 Frequently Asked
                 <br />
                 <span className="bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent">

@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="flex flex-col items-center justify-start w-full p-4 bg-dark-section">
+    <footer className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
       <div className="w-full max-w-[1920px] mx-auto bg-[#1B0C25] rounded-2xl p-10 md:p-16 relative overflow-hidden">
         
         <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-blue to-gradient-pink opacity-25 blur-[80px] -left-48 -top-32"></div>
@@ -41,27 +41,25 @@ export default function Footer() {
                 </Badge>
               </motion.div>
               
-              <motion.h2 variants={itemVariants} className="text-[76px] font-medium text-white leading-tight max-w-4xl">
+              <motion.h2 variants={itemVariants} className="text-[40px] lg:text-[76px] font-medium text-white leading-tight max-w-4xl">
                 Ready to start your AI <br /> journey with us?
               </motion.h2>
               
               <motion.div 
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row items-start justify-start space-y-4 sm:space-y-0 sm:space-x-6"
+                className="flex flex-row items-start justify-start space-x-4 sm:space-x-6"
               >
                 <motion.div variants={buttonVariants} whileHover="hover">
-                  <Button 
-                    size="lg"
-                    className="bg-[#1B0C25] text-white px-8 py-4 text-lg font-semibold shadow-[inset_0px_1px_2px_rgba(255,255,255,0.4),_0px_1px_2px_rgba(0,0,0,0.1)] backdrop-blur-sm border border-transparent hover:bg-black"
+                  <Button
+                    className="inline-flex items-center justify-center px-8 py-4 bg-aireal-primary text-white font-medium rounded-lg backdrop-blur-md shadow-lg border-0 transition-all duration-300 hover:bg-aireal-primary/90 hover:shadow-xl"
                   >
                     Get Started
                   </Button>
                 </motion.div>
                 <motion.div variants={buttonVariants} whileHover="hover">
-                  <Button 
+                  <Button
                     variant="outline"
-                    size="lg"
-                    className="bg-white text-black border-gray-200 px-8 py-4 text-lg font-semibold hover:bg-gray-100"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium rounded-lg backdrop-blur-md shadow-md border border-white transition-all duration-300 hover:bg-white/10 hover:shadow-lg"
                   >
                     Book a Demo
                   </Button>
@@ -78,7 +76,7 @@ export default function Footer() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between gap-8"
+            className="relative flex w-full flex-row flex-nowrap items-start justify-between overflow-hidden h-min content-start flex-none p-0 z-[3]"
           >
             <motion.div variants={itemVariants} className="flex-1 max-w-sm">
               <div className="flex items-center space-x-3 mb-4">

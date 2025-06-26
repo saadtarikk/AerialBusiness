@@ -67,7 +67,7 @@ export default function About() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start w-full p-4 bg-dark-section">
+    <section className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -120,7 +120,7 @@ export default function About() {
             </motion.div>
 
             <motion.p 
-              className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.26] text-white select-none"
+              className="text-[40px] lg:text-6xl font-medium leading-[1.26] text-white select-none"
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
