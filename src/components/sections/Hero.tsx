@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
 import heroBg from '@/assets/vkYLURkIQB3wgCJUD4m2MGdbKg.png';
 import dashboardPreview from '@/assets/YgUzdX0IbuuAdlAK9HhOXgkq8.png';
+import CustomCursor from '@/components/CustomCursor';
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -73,6 +74,7 @@ export default function Hero() {
 
   return (
     <div className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
+      <CustomCursor />
       <header className="relative w-full max-w-[1920px] mx-auto overflow-hidden rounded-2xl min-h-screen pt-[120px]">
         {/* Background Image */}
         <div className="absolute inset-0 rounded-2xl">

@@ -18,7 +18,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-32 bg-dark-section relative overflow-hidden">
+    <section id="faq" className="pt-16 pb-32 bg-dark-section relative overflow-hidden">
       {/* Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/10 to-pink-900/10"></div>
       

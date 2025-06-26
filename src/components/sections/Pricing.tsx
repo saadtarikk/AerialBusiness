@@ -8,7 +8,7 @@ import { PRICING_PLANS } from '@/lib/constants';
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-32 bg-dark-section relative overflow-hidden">
+    <section id="pricing" className="pt-32 pb-16 bg-dark-section relative overflow-hidden">
       {/* Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-blue-900/10 to-purple-900/10"></div>
       

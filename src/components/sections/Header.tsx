@@ -35,18 +35,29 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-[100] flex justify-center"
         style={{ paddingTop: isScrolled ? '12px' : '28px' }}
       >
-        <nav className={`glassmorphism rounded-2xl flex items-center justify-between transition-all duration-300 w-full max-w-[1240px] mx-6 ${
-          isScrolled 
-            ? 'px-4 py-2 bg-white/20' 
-            : 'px-3 py-3 bg-white/10'
-        }`}>
+        <motion.nav
+          className="glassmorphism rounded-2xl flex items-center justify-between w-full mx-6"
+          animate={{
+            maxWidth: isScrolled ? '1024px' : '1240px',
+            paddingTop: isScrolled ? '8px' : '12px',
+            paddingBottom: isScrolled ? '8px' : '12px',
+            paddingLeft: isScrolled ? '16px' : '12px',
+            paddingRight: isScrolled ? '16px' : '12px',
+            backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 30,
+          }}
+        >
           {/* Logo Section */}
           <div className="flex items-center gap-3.5">
-            <div className={`bg-aireal-primary rounded-lg flex items-center justify-center transition-all duration-300 ${
+            <div className={`bg-white rounded-lg flex items-center justify-center transition-all duration-300 ${
               isScrolled ? 'w-8 h-8' : 'w-10 h-10'
             }`}>
-              <Bot className={`text-white transition-all duration-300 ${
-                isScrolled ? 'text-sm' : 'text-base'
+              <X className={`text-black transition-all duration-300 ${
+                isScrolled ? 'text-base' : 'text-xl'
               }`} />
             </div>
             <span className={`font-medium text-aireal-primary transition-all duration-300 ${
@@ -96,7 +107,7 @@ export default function Header() {
               {isMobileMenuOpen ? <X /> : <Menu />}
             </Button>
           </div>
-        </nav>
+        </motion.nav>
       </motion.header>
 
       {/* Mobile Menu */}

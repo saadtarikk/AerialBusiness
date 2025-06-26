@@ -26,14 +26,6 @@ export default function Footer() {
         
         <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-blue to-gradient-pink opacity-25 blur-[80px] -left-48 -top-32"></div>
         <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-orange to-gradient-pink opacity-20 blur-[80px] -right-32 -bottom-48"></div>
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 z-0 flex items-center justify-center"
-        >
-          <span className="text-[20rem] font-black text-white/5 select-none">
-            AiReal
-          </span>
-        </div>
 
         <div className="relative z-10 flex flex-col items-start text-left mb-24">
             <motion.div
@@ -84,7 +76,7 @@ export default function Footer() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative flex w-full flex-row flex-nowrap items-start justify-between overflow-hidden h-min content-start flex-none p-0 z-[3]"
+            className="relative flex w-full flex-col lg:flex-row flex-nowrap items-start justify-start lg:justify-between gap-16 lg:gap-0 overflow-hidden h-min content-start flex-none p-0 z-[3]"
           >
             <motion.div variants={itemVariants} className="flex-1 max-w-sm">
               <div className="flex items-center space-x-3 mb-4">
@@ -154,6 +146,18 @@ export default function Footer() {
             </div>
           </motion.div>
           
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-center"
+          >
+            <span className="text-8xl font-black text-white/5 select-none">
+              AiReal
+            </span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
