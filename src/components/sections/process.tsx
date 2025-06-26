@@ -142,12 +142,12 @@ export default function Process() {
           <motion.h2 variants={itemVariants} className="text-[40px] lg:text-6xl font-medium text-foreground mb-8 leading-[1.1]">
             Explore the Power of{' '}
             <span className="bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent">
-              Fluence AI
+              AiReal
             </span>
           </motion.h2>
 
           <motion.p variants={itemVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Discover how Fluence AI transforms raw data into actionable insights. Our advanced features are designed to optimize workflows.
+            Discover how AiReal transforms raw data into actionable insights. Our advanced features are designed to optimize workflows.
           </motion.p>
         </motion.div>
 

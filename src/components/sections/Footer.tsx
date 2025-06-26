@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Bot, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { X, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
@@ -26,6 +26,14 @@ export default function Footer() {
         
         <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-blue to-gradient-pink opacity-25 blur-[80px] -left-48 -top-32"></div>
         <div className="absolute w-[658px] h-[548px] rounded-full bg-gradient-to-r from-gradient-orange to-gradient-pink opacity-20 blur-[80px] -right-32 -bottom-48"></div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-0 flex items-center justify-center"
+        >
+          <span className="text-[20rem] font-black text-white/5 select-none">
+            AiReal
+          </span>
+        </div>
 
         <div className="relative z-10 flex flex-col items-start text-left mb-24">
             <motion.div
@@ -80,8 +88,8 @@ export default function Footer() {
           >
             <motion.div variants={itemVariants} className="flex-1 max-w-sm">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
-                  <Bot className="text-white text-xl" />
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                  <X className="text-black text-xl" />
                 </div>
                 <span className="text-3xl font-medium text-white">AiReal</span>
               </div>
@@ -105,7 +113,7 @@ export default function Footer() {
               </div>
             </motion.div>
             
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-left">
+            <div className="grid grid-cols-2 gap-x-16 text-left">
               <motion.div variants={itemVariants}>
                 <h4 className="text-white font-semibold mb-4">Use Link</h4>
                 <ul className="space-y-3">
@@ -154,7 +162,7 @@ export default function Footer() {
             className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between"
           >
             <p className="text-white/60 text-sm">
-              © 2025 Design & Developed by <a href="https://x.com/hello_amani" target="_blank" rel="noopener" className="underline hover:text-white">Amani</a>
+              © 2025 Design & Developed by Amani
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy-policy" className="text-white/60 hover:text-white transition-colors text-sm">
