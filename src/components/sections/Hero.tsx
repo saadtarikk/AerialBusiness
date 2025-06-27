@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { useLenis } from '@studio-freight/react-lenis';
+import { Bot, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
@@ -9,7 +10,16 @@ import dashboardPreview from '@/assets/YgUzdX0IbuuAdlAK9HhOXgkq8.png';
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 50], { clamp: false });
+  
+  // Layer transforms
+  const yBg = useTransform(scrollY, [0, 800], [0, 40], { clamp: false });
+  const yDashboard = useTransform(scrollY, [0, 800], [0, 120], { clamp: false });
+
+  // Foreground icon transforms
+  const yIcon2 = useTransform(scrollY, [0, 800], [0, -400]);
+  const scaleIcon2 = useTransform(scrollY, [0, 800], [1, 1.5]);
+  const rotateIcon2 = useTransform(scrollY, [0, 800], [0, 25]);
+  
   const lenis = useLenis();
 
   const handleScrollTo = (target: string) => {
@@ -85,14 +95,27 @@ export default function Hero() {
     <div className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
       <header className="relative w-full max-w-[1920px] mx-auto overflow-hidden rounded-2xl min-h-screen pt-[120px]">
         {/* Background Image */}
-        <div className="absolute inset-0 rounded-2xl">
+        <motion.div 
+          className="absolute inset-0 rounded-2xl"
+          style={{ y: yBg }}
+        >
           <img
             src={heroBg}
             alt="Sky background"
             className="w-full h-full object-cover rounded-2xl"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/10 rounded-2xl" />
-        </div>
+        </motion.div>
+
+        {/* Floating Icons - Foreground */}
+        <motion.div 
+            className="absolute top-[50%] right-[10%] z-20 hidden lg:block"
+            style={{ y: yIcon2, scale: scaleIcon2, rotate: rotateIcon2 }}
+        >
+            <div className="glassmorphism-card rounded-full p-6 shadow-lg">
+                <TrendingUp className="w-16 h-16 text-white/80" />
+            </div>
+        </motion.div>
 
         {/* Content */}
         <motion.div
@@ -174,7 +197,7 @@ export default function Hero() {
               <motion.div
                 className="relative w-full rounded-2xl overflow-hidden shadow-2xl"
                 style={{ 
-                  y,
+                  y: yDashboard,
                   perspective: '1000px',
                   rotateX: '5deg'
                 }}
