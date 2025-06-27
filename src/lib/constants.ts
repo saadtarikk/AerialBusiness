@@ -14,6 +14,7 @@ export const NAVIGATION_LINKS = [
   { href: '#features', label: 'Features' },
   { href: '#about', label: 'About' },
   { href: '#testimonials', label: 'Testimonials' },
+  { href: '#blog', label: 'Blog' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' }
 ];
@@ -143,5 +144,26 @@ export const FAQ_ITEMS = [
   {
     question: 'How quickly can I get started?',
     answer: 'Most customers are up and running within 24 hours. Our onboarding team will help you set up integrations, train the AI with your specific content, and ensure everything is working perfectly before you go live.'
+  }
+];
+
+export const BLOG_POSTS = [
+  {
+    title: 'The Benefits of Using Free Framer Templates',
+    date: 'Sep 5, 2023',
+    image: 'https://framerusercontent.com/images/LRNzrbcrRDBJ0JszkJzxPBakkPw.jpg',
+    slug: 'the-benefits-of-using-free-framer-templates'
+  },
+  {
+    title: 'How to Customize Free Framer Templates to Fit Your Brand',
+    date: 'Sep 4, 2023',
+    image: 'https://framerusercontent.com/images/KMjg7IZncg1lzgObKZfV9sWxxYM.jpg',
+    slug: 'how-to-customize-free-framer-templates'
+  },
+  {
+    title: 'Top 5 Free Framer Templates for Startups',
+    date: 'Sep 3, 2023',
+    image: 'https://framerusercontent.com/images/ovbOvxTe7o4FDCaxu51bTPIsLvU.jpg',
+    slug: 'top-5-free-framer-templates-for-startups'
   }
 ];
