@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLenis } from '@studio-freight/react-lenis';
+import { Link, useLocation } from 'wouter';
 import { Bot, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { containerVariants, itemVariants } from '@/components/animations/variants';
@@ -8,6 +10,8 @@ import { NAVIGATION_LINKS } from '@/lib/constants';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const lenis = useLenis();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +23,23 @@ export default function Header() {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+    if (location !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        lenis?.scrollTo(href, {
+          offset: -100, // Adjust this offset to account for the sticky header
+          duration: 2,
+          easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2, // easeInOutQuint
+        });
+      }, 100); // Small delay for page transition
+    } else {
+      lenis?.scrollTo(href, {
+        offset: -100, // Adjust this offset to account for the sticky header
+        duration: 2,
+        easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2, // easeInOutQuint
+      });
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -87,13 +103,16 @@ export default function Header() {
           
           {/* Contact Button */}
           <div className="hidden lg:block">
-            <Button 
-              className={`bg-aireal-primary text-white rounded-lg font-medium hover:-translate-y-0.5 transition-all duration-200 shadow-[rgba(255,255,255,0.4)_0px_1px_2px_0px_inset,rgba(0,0,0,0.1)_0px_1px_2px_0px] ${
-                isScrolled ? 'px-4 py-2 text-sm h-8' : 'px-6 py-2.5 text-base h-10'
-              }`}
-            >
-              Contact
-            </Button>
+            <Link href="/contact">
+              <Button 
+                asChild
+                className={`bg-aireal-primary text-white rounded-lg font-medium hover:-translate-y-0.5 transition-all duration-200 shadow-[rgba(255,255,255,0.4)_0px_1px_2px_0px_inset,rgba(0,0,0,0.1)_0px_1px_2px_0px] ${
+                  isScrolled ? 'px-4 py-2 text-sm h-8' : 'px-6 py-2.5 text-base h-10'
+                }`}
+              >
+                <a>Contact</a>
+              </Button>
+            </Link>
           </div>
           
           {/* Mobile Menu Button */}
@@ -137,9 +156,11 @@ export default function Header() {
                 </motion.button>
               ))}
               <div className="pt-4 border-t border-aireal-primary/20">
-                <Button className="bg-aireal-primary text-white w-full hover:-translate-y-0.5 transition-all">
-                  Contact
-                </Button>
+                <Link href="/contact">
+                  <Button asChild className="bg-aireal-primary text-white w-full hover:-translate-y-0.5 transition-all">
+                    <a>Contact</a>
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -151,6 +172,7 @@ export default function Header() {
         <div
           className="fixed inset-0 bg-black/50 z-[80] lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
+          style={{ maxWidth: '1024px' }}
         />
       )}
     </>

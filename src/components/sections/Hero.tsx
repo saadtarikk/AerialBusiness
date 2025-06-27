@@ -1,15 +1,24 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import { useLenis } from '@studio-freight/react-lenis';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { containerVariants, itemVariants, buttonVariants } from '@/components/animations/variants';
 import heroBg from '@/assets/vkYLURkIQB3wgCJUD4m2MGdbKg.png';
 import dashboardPreview from '@/assets/YgUzdX0IbuuAdlAK9HhOXgkq8.png';
-import CustomCursor from '@/components/CustomCursor';
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 50], { clamp: false });
+  const lenis = useLenis();
+
+  const handleScrollTo = (target: string) => {
+    lenis?.scrollTo(target, {
+      offset: -100,
+      duration: 2,
+      easing: (t) => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2, // easeInOutQuint
+    });
+  };
 
   const wordVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -74,7 +83,6 @@ export default function Hero() {
 
   return (
     <div className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
-      <CustomCursor />
       <header className="relative w-full max-w-[1920px] mx-auto overflow-hidden rounded-2xl min-h-screen pt-[120px]">
         {/* Background Image */}
         <div className="absolute inset-0 rounded-2xl">
@@ -88,7 +96,7 @@ export default function Hero() {
 
         {/* Content */}
         <motion.div
-          className="relative z-10 flex flex-col items-start justify-center min-h-screen max-w-6xl mx-auto px-10 py-20 lg:px-20"
+          className="relative z-10 flex flex-col items-start justify-center min-h-screen max-w-6xl mx-auto px-8 lg:px-20 py-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -138,6 +146,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
+                  onClick={() => handleScrollTo('#pricing')}
                   className="inline-flex items-center justify-center px-8 py-4 bg-aireal-primary text-white font-medium rounded-lg backdrop-blur-md shadow-lg border-0 transition-all duration-300 hover:bg-aireal-primary/90 hover:shadow-xl"
                 >
                   <span className="relative z-10">Get Started</span>

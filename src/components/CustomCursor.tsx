@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 
 const spring = {
@@ -36,7 +36,7 @@ export function useFollowPointer() {
     ([newX, newY]) => {
       const xPx = typeof newX === 'number' ? `${newX}px` : '0px';
       const yPx = typeof newY === 'number' ? `${newY}px` : '0px';
-      return `radial-gradient(circle at ${xPx} ${yPx}, rgba(206, 172, 255, 0.15), transparent 80%)`;
+      return `radial-gradient(circle at ${xPx} ${yPx}, rgba(206, 172, 255, 0.045), transparent 80%)`;
     }
   );
 
@@ -45,15 +45,35 @@ export function useFollowPointer() {
 
 export default function CustomCursor() {
   const { x, y, background } = useFollowPointer();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(pointer: fine)');
+    const updateIsDesktop = () => setIsDesktop(mediaQuery.matches);
+    
+    updateIsDesktop();
+    mediaQuery.addEventListener('change', updateIsDesktop);
+    
+    return () => mediaQuery.removeEventListener('change', updateIsDesktop);
+  }, []);
+
+  if (!isDesktop) {
+    return null;
+  }
 
   return (
-    <motion.div
-      style={{ 
-        x, 
-        y,
-        background,
-      }}
-      className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 backdrop-blur-md bg-white/10 border border-white/20"
-    />
+    <>
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-[9998]"
+        style={{ background }}
+      />
+      <motion.div
+        style={{
+          x,
+          y,
+        }}
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 backdrop-blur-md bg-gradient-to-r from-aireal-purple to-gradient-pink border border-white/20"
+      />
+    </>
   );
 } 
