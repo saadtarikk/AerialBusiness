@@ -146,7 +146,7 @@ export default function Footer() {
               <motion.div variants={itemVariants}>
                 <h4 className="text-white font-semibold mb-4">Company</h4>
                 <ul className="space-y-2">
-                  <li className="text-white/60 text-sm">105 North 1st Street, #28,<br/>San Jose, CA 94748</li>
+                  <li className="text-white/60 text-sm">119 Whitefield Road<br/>Glasgow, G51 2SD</li>
                 </ul>
               </motion.div>
             </div>
@@ -160,7 +160,7 @@ export default function Footer() {
             className="text-center"
           >
             <span className="text-8xl font-black text-white/5 select-none">
-              AiReal
+              Aireal
             </span>
           </motion.div>
 
@@ -172,7 +172,7 @@ export default function Footer() {
             className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between"
           >
             <p className="text-white/60 text-sm">
-              © 2025 Design & Developed by Amani
+              © 2025 Design & Developed by Delivix
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy-policy" className="text-white/60 hover:text-white transition-colors text-sm">

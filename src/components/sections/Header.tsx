@@ -68,7 +68,7 @@ export default function Header() {
           }}
         >
           {/* Logo Section */}
-          <div className="flex items-center gap-3.5">
+          <button onClick={() => scrollToSection('#hero')} className="flex items-center gap-3.5 cursor-pointer">
             <div className={`bg-white rounded-lg flex items-center justify-center transition-all duration-300 ${
               isScrolled ? 'w-8 h-8' : 'w-10 h-10'
             }`}>
@@ -81,7 +81,7 @@ export default function Header() {
             }`}>
               Aireal
             </span>
-          </div>
+          </button>
           
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">

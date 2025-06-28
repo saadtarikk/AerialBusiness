@@ -92,7 +92,7 @@ export default function Hero() {
   const description = "Aireal helps you connect, manage, and optimize your AI tools effortlessly. Unlock powerful insights and automate complex processes with ease.";
 
   return (
-    <div className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
+    <div id="hero" className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
       <header className="relative w-full max-w-[1920px] mx-auto overflow-hidden rounded-2xl min-h-screen pt-[120px]">
         {/* Background Image */}
         <motion.div 

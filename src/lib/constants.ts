@@ -5,9 +5,9 @@ import avatarDavid from '@/assets/avatar-david-chen.png';
 export const COMPANY_INFO = {
   name: 'Aireal',
   tagline: 'AI-powered Customer Service Platform',
-  address: '105 North 1st Street, #28, San Jose, CA 94748',
+  address: '119 Whitefield Road, Glasgow G51 2SD',
   email: 'hello@aireal.com',
-  phone: '+1 (555) 123-4567'
+  phone: '0744 444 444'
 };
 
 export const NAVIGATION_LINKS = [
