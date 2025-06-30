@@ -8,6 +8,7 @@ const Process = lazy(() => import('@/components/sections/process'));
 const About = lazy(() => import('@/components/sections/About'));
 const Testimonials = lazy(() => import('@/components/sections/Testimonials'));
 const Pricing = lazy(() => import('@/components/sections/Pricing'));
+const Blog = lazy(() => import('@/components/sections/Blog'));
 const FAQ = lazy(() => import('@/components/sections/FAQ'));
 const Footer = lazy(() => import('@/components/sections/Footer'));
 
@@ -22,6 +23,7 @@ export default function Home() {
                 <LazyLoad component={About} />
                 <LazyLoad component={Testimonials} />
                 <LazyLoad component={Pricing} />
+                <LazyLoad component={Blog} />
                 <LazyLoad component={FAQ} />
             </main>
             <Footer />

@@ -145,3 +145,33 @@ export const FAQ_ITEMS = [
     answer: 'Most customers are up and running within 24 hours. Our onboarding team will help you set up integrations, train the AI with your specific content, and ensure everything is working perfectly before you go live.'
   }
 ];
+
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    title: 'Why Data Security is Vital for Every SaaS Platform',
+    excerpt: 'Discover essential security practices and compliance requirements for modern SaaS platforms to protect your customers and business.',
+    image: '/src/assets/tyw3zK8EGKr3laKc5scgwDmBag.png',
+    category: 'Security',
+    date: 'Oct 10, 2024',
+    slug: 'why-data-security-is-vital-for-every-saas-platform'
+  },
+  {
+    id: 2,
+    title: 'Efficient Strategies for Scaling Your SaaS Business',
+    excerpt: 'Learn proven methodologies and frameworks to scale your SaaS business from startup to enterprise level.',
+    image: '/src/assets/ZR1Iqs0oD39u4eGjMDsbMZWhMY.png',
+    category: 'Business',
+    date: 'Mar 13, 2025',
+    slug: 'efficient-strategies-for-scaling-your-saas-business'
+  },
+  {
+    id: 3,
+    title: 'The Ultimate SaaS Template for Startups',
+    excerpt: 'Everything you need to launch your SaaS product quickly with our comprehensive startup template and best practices.',
+    image: '/src/assets/ARTVA54SjmGxUnXYrIR3eezEy0.png',
+    category: 'Development',
+    date: 'Feb 16, 2025',
+    slug: 'the-ultimate-saas-template-for-startups'
+  }
+];
