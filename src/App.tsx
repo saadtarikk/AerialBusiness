@@ -9,6 +9,7 @@ import CustomCursor from "./components/CustomCursor";
 
 const Home = lazy(() => import("@/pages/home"));
 const Contact = lazy(() => import("@/pages/contact"));
+const BlogPost = lazy(() => import("@/pages/blog-post"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/contact" component={Contact} />
+        <Route path="/blog/efficient-strategies-for-scaling-your-saas-business" component={BlogPost} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

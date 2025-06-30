@@ -6,6 +6,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { BLOG_POSTS } from '@/lib/constants';
 import { containerVariants, itemVariants, cardVariants } from '@/components/animations/variants';
 import { ArrowRight, Calendar, BookOpen } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Blog() {
   return (
@@ -56,21 +57,9 @@ export default function Blog() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {BLOG_POSTS.map((post, index) => (
-            <motion.div 
-              key={post.id} 
-              variants={cardVariants}
-              whileHover={{ 
-                scale: 1.02,
-                y: -5,
-                transition: { 
-                  duration: 0.3,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }
-              }}
-              className="group"
-            >
-              <Card className="h-full glassmorphism-card border-white/10 bg-white/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden">
+          {BLOG_POSTS.map((post, index) => {
+            const cardContent = (
+              <Card className="h-full glassmorphism-card border-white/10 bg-white/5 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer">
                 {/* Blog Image with AspectRatio */}
                 <AspectRatio ratio={16 / 9} className="relative overflow-hidden">
                   <img
@@ -116,8 +105,32 @@ export default function Blog() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          ))}
+            );
+
+            return (
+              <motion.div 
+                key={post.id} 
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5,
+                  transition: { 
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }
+                }}
+                className="group"
+              >
+                {index === 1 ? (
+                  <Link href="/blog/efficient-strategies-for-scaling-your-saas-business">
+                    {cardContent}
+                  </Link>
+                ) : (
+                  cardContent
+                )}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
