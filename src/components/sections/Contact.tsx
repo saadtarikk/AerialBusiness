@@ -1,19 +1,56 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Info } from 'lucide-react';
+import { Mail, Info, CheckCircle, XCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 import { containerVariants, itemVariants } from '@/components/animations/variants';
 import testimonialAvatar from '@/assets/yIREXkwAthEgTDhWj0Imj3yZ9JA.png';
 
 export default function Contact() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle form submission
+  const onSubmit = async (data: any) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${data.firstName} ${data.lastName}`,
+          email: data.email,
+          message: `${data.message} (Phone: ${data.phone || 'N/A'})`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Success!',
+          description: 'Your message has been sent.',
+          variant: 'default',
+          action: <CheckCircle className="text-green-500" />,
+        });
+        reset();
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong. Please try again later.',
+        variant: 'destructive',
+        action: <XCircle className="text-red-500" />,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -130,9 +167,10 @@ export default function Contact() {
                 <div>
                   <Button 
                     type="submit" 
+                    disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-aireal-purple to-gradient-pink text-white transition-transform hover:scale-105"
                   >
-                    Submit
+                    {isSubmitting ? 'Sending...' : 'Submit'}
                   </Button>
                 </div>
                 <p className="text-xs text-white/60 text-center">

@@ -64,7 +64,7 @@ export default function Footer() {
                       variant="outline"
                       className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium rounded-lg backdrop-blur-md shadow-md border border-white transition-all duration-300 hover:bg-white/10 hover:shadow-lg"
                     >
-                      <a>Book a Demo</a>
+                      <span>Book a Demo</span>
                     </Button>
                   </Link>
                 </motion.div>

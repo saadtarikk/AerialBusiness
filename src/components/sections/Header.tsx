@@ -110,7 +110,7 @@ export default function Header() {
                   isScrolled ? 'px-4 py-2 text-sm h-8' : 'px-6 py-2.5 text-base h-10'
                 }`}
               >
-                <a>Contact</a>
+                <span>Contact</span>
               </Button>
             </Link>
           </div>
@@ -158,7 +158,7 @@ export default function Header() {
               <div className="pt-4 border-t border-aireal-primary/20">
                 <Link href="/contact">
                   <Button asChild className="bg-aireal-primary text-white w-full hover:-translate-y-0.5 transition-all">
-                    <a>Contact</a>
+                    <span>Contact</span>
                   </Button>
                 </Link>
               </div>
