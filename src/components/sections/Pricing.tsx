@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { containerVariants, itemVariants, cardVariants, badgeVariants, buttonVariants } from '@/components/animations/variants';
 import { PRICING_PLANS } from '@/lib/constants';
+import AnimatedGlowBackground from '@/components/animations/AnimatedGlowBackground';
 
 export default function Pricing() {
   return (
     <section id="pricing" className="pt-32 pb-16 bg-dark-section relative overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-blue-900/10 to-purple-900/10"></div>
+      <AnimatedGlowBackground />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

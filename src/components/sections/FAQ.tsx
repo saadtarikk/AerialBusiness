@@ -19,9 +19,6 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="pt-16 pb-32 bg-dark-section relative overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/10 to-pink-900/10"></div>
-      
       <div className="container mx-auto relative z-10 p-10 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden">
         <div className="flex flex-col lg:flex-row gap-[60px] items-start">
           

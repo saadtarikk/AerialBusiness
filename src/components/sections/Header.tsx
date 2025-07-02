@@ -15,10 +15,17 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      const featuresSection = document.getElementById('features');
+      const triggerPoint = featuresSection 
+        ? featuresSection.offsetTop - 100
+        : 900;
+      
+      setIsScrolled(window.scrollY > triggerPoint);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -76,8 +83,8 @@ export default function Header() {
                 isScrolled ? 'text-base' : 'text-xl'
               }`} />
             </div>
-            <span className={`font-medium text-aireal-primary transition-all duration-300 ${
-              isScrolled ? 'text-xl' : 'text-[28px] leading-10'
+            <span className={`font-medium transition-all duration-300 ${
+              isScrolled ? 'text-xl bg-gradient-to-r from-aireal-purple to-gradient-pink bg-clip-text text-transparent' : 'text-[28px] leading-10 text-aireal-primary'
             }`}>
               Aireal
             </span>
@@ -106,8 +113,10 @@ export default function Header() {
             <Link href="/contact">
               <Button 
                 asChild
-                className={`bg-aireal-primary text-white rounded-lg font-medium hover:-translate-y-0.5 transition-all duration-200 shadow-[rgba(255,255,255,0.4)_0px_1px_2px_0px_inset,rgba(0,0,0,0.1)_0px_1px_2px_0px] ${
-                  isScrolled ? 'px-4 py-2 text-sm h-8' : 'px-6 py-2.5 text-base h-10'
+                className={`text-white rounded-lg font-medium hover:-translate-y-0.5 transition-all duration-200 shadow-[rgba(255,255,255,0.4)_0px_1px_2px_0px_inset,rgba(0,0,0,0.1)_0px_1px_2px_0px] ${
+                  isScrolled 
+                    ? 'px-4 py-2 text-sm h-8 bg-gradient-to-r from-aireal-purple to-gradient-pink' 
+                    : 'px-6 py-2.5 text-base h-10 bg-aireal-primary'
                 }`}
               >
                 <span>Contact</span>

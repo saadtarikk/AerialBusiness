@@ -60,9 +60,6 @@ const cardVariants: Variants = {
 export default function Features() {
   return (
     <section id="features" className="py-32 bg-dark-section relative overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/10 to-pink-900/10"></div>
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           variants={containerVariants}

@@ -64,10 +64,6 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed inset-0 pointer-events-none z-[9998]"
-        style={{ background }}
-      />
-      <motion.div
         style={{
           x,
           y,
