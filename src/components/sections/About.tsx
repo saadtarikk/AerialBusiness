@@ -28,8 +28,10 @@ export default function About() {
   const parallaxX2 = useTransform(mouseX, [-200, 200], [15, -15]);
   const parallaxY2 = useTransform(mouseY, [-200, 200], [10, -10]);
 
-  const text = "Aireal is crafted to elevate how businesses showcase their AI solutions. With a focus on clean design, it helps brands engage and convert.";
-  const words = text.split(' ');
+  const paragraphs = [
+    "Most of our projects start the same way: a digital product that's underperforming, a stalled roadmap, or a team that needs to pick up speed. Whether it's an outdated platform, a failed build, or an idea that's never left the ground, we're brought in to cut through the noise and make things work.",
+    "We thrive with teams that are ambitious but under pressure — founders racing to launch, marketers eager to modernise, IT leads rebuilding without disrupting operations. People who don't just want to hand over a brief and walk away; they want a partner who'll think critically, challenge ideas, and deliver side by side."
+  ];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -105,7 +107,7 @@ export default function About() {
         <div
           className="relative z-10 flex flex-col items-center justify-center min-h-screen px-10 py-20 lg:px-20"
         >
-          <div className="flex flex-col items-start justify-center gap-4 max-w-4xl w-full">
+          <div className="flex flex-col items-start justify-center gap-8 max-w-4xl w-full">
             <motion.div
               variants={badgeVariants}
               whileHover={{ scale: 1.05, y: -2, rotate: -2 }}
@@ -117,24 +119,29 @@ export default function About() {
               </p>
             </motion.div>
 
-            <motion.p 
-              className="text-[40px] lg:text-6xl font-medium leading-[1.26] text-white select-none"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-            >
-              {words.map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3"
-                  whileHover={{ scale: 1.1, y: -2, color: '#ffffff' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+            <div className="space-y-8">
+              {paragraphs.map((paragraph, pIndex) => (
+                <motion.p 
+                  key={pIndex}
+                  className="text-2xl lg:text-3xl font-medium leading-relaxed text-white/90 select-none"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
                 >
-                  {word}
-                </motion.span>
+                  {paragraph.split(' ').map((word, wIndex) => (
+                    <motion.span
+                      key={wIndex}
+                      variants={wordVariants}
+                      className="inline-block mr-1.5"
+                      whileHover={{ scale: 1.1, y: -2, color: '#ffffff' }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.p>
               ))}
-            </motion.p>
+            </div>
           </div>
         </div>
       </motion.div>

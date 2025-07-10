@@ -64,6 +64,12 @@
 
   body {
     @apply font-sans antialiased bg-black text-white;
+    cursor: none;
+  }
+
+  a,
+  button {
+    cursor: none;
   }
   
   html {

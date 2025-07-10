@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 
 const spring = {
-  damping: 25,
-  stiffness: 300,
+  damping: 30,
+  stiffness: 700,
   restDelta: 0.001
 };
 
@@ -68,7 +68,7 @@ export default function CustomCursor() {
           x,
           y,
         }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 backdrop-blur-md bg-gradient-to-r from-aireal-purple to-gradient-pink border border-white/20"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 backdrop-blur-md bg-gradient-to-r from-aireal-purple to-gradient-pink border border-white/20"
       />
     </>
   );

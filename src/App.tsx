@@ -49,6 +49,13 @@ function App() {
         <AnimatePresence>{isLoading && <Loader />}</AnimatePresence>
         
         {/*
+          By placing the CustomCursor outside the main content's motion.div,
+          we ensure it exists in a higher-level stacking context. This helps
+          prevent z-index conflicts with fixed elements like the header and footer.
+        */}
+        <CustomCursor />
+
+        {/*
           The main content of the application is wrapped in a `motion.div` to control its appearance.
           - The `animate` prop is linked to the loading state. When loading is finished, it transitions to opacity: 1.
           - `initial={{ opacity: 0 }}` sets the starting state to be invisible.
@@ -59,7 +66,6 @@ function App() {
           animate={{ opacity: !isLoading ? 1 : 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
-          <CustomCursor />
           <Toaster />
           <Router />
           <BackToTopButton />

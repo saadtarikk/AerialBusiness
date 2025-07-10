@@ -88,8 +88,8 @@ export default function Hero() {
     }
   };
 
-  const titleWords = ['The', 'AI-powered', 'Customer', 'Service', 'Platform'];
-  const description = "Aireal helps you connect, manage, and optimize your AI tools effortlessly. Unlock powerful insights and automate complex processes with ease.";
+  const titleWords = "We design and build digital experiences that help businesses move faster, work smarter, and sell more.".split(' ');
+  const description = "Whether it's a standout website, a powerful platform, or an AI-powered app.";
 
   return (
     <div id="hero" className="flex flex-col items-center justify-start w-full p-2 lg:p-4 bg-dark-section">
@@ -138,7 +138,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Title */}
-            <motion.h1 className="text-[42px] lg:text-7xl font-medium leading-tight text-aireal-primary text-center lg:text-left">
+            <motion.h1 className="text-4xl lg:text-5xl font-medium leading-tight text-aireal-primary text-center lg:text-left">
               {titleWords.map((word, index) => (
                 <motion.span
                   key={index}
